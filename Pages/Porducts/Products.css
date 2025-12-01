@@ -1,0 +1,309 @@
+:root {
+    --bg-light: #F4F5F7;
+    --text-main: #111111;
+    --text-grey: #666666;
+    --btn-pill: #ffffff;
+    --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-stack);
+    color: var(--text-main);
+    background: #fff;
+    line-height: 1.5;
+    overflow-x: hidden; /* Prevents horizontal scroll if an image explodes */
+}
+
+/* --- GLOBAL IMAGE RESET (Crucial for fixing layout) --- */
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- 1. Hero Section --- */
+.hero-top {
+    width: 100%;
+    height: 80vh; /* Taller hero */
+    position: relative;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    /* Since you are using a DIV, you must set the image here in CSS */
+    background-image: url('../../Images/Man-riding-Veloretti-Electric-Ace-Two-Matte-Black.jpg'); /* REPLACE WITH YOUR HERO IMAGE PATH */
+    background-size: cover;
+    background-position: center;
+}
+
+/* --- 2. Electric Bikes --- */
+.electric-bikes {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.product-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.product-card-large {
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    padding: 2rem;
+    height: 600px; /* Fixed height to align cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-header h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.card-image-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 1rem;
+    overflow: hidden; /* Keeps image inside */
+}
+
+.product-img {
+    max-height: 350px; /* Limits height so buttons fit */
+    width: 100%;
+    object-fit: contain; /* SHOWS WHOLE BIKE */
+}
+
+.arrow-nav {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ccc;
+    padding: 0 1rem;
+    z-index: 2;
+    transition: color 0.3s;
+}
+.arrow-nav:hover { color: #000; }
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.btn-pill {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-pill:hover {
+    border-color: #000;
+    background: #000;
+    color: #fff;
+}
+
+.color-swatches { display: flex; gap: 10px; }
+.swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    display: block;
+    cursor: pointer;
+}
+.swatch.black { background: #000; }
+.swatch.grey { background: #777; }
+.swatch.beige { background: #D2C4B4; }
+
+/* --- 3. Explore Section --- */
+.explore-section {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.cat-card {
+    background-color: var(--bg-light);
+    height: 450px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cat-img {
+    flex-grow: 1;
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Shows whole item */
+    margin: 1rem 0;
+    z-index: 1;
+}
+
+.btn-pill-small {
+    align-self: flex-start;
+    background: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* --- 4. Commute & Map --- */
+.commute-text {
+    padding: 6rem 2rem;
+    max-width: 900px;
+    margin-left: 10%;
+}
+
+.commute-text h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.full-width-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- 5. Split Sections (THE FIX FOR "NOT COVERING") --- */
+.split-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 600px; /* Fixed height is required for 'cover' to work */
+    width: 100%;
+    overflow: hidden;
+}
+
+.split-image-container {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: relative;
+}
+
+.split-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image fill the box perfectly */
+    object-position: center;
+}
+
+.split-content {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: white;
+}
+
+.split-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+.split-content p { font-size: 1.1rem; color: var(--text-grey); margin-bottom: 2rem; max-width: 450px; }
+
+.link-arrow {
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--text-main);
+    padding-bottom: 3px;
+    width: fit-content;
+}
+
+/* --- 6. Testimonials (FIX FOR LOGOS) --- */
+.testimonials {
+    padding: 6rem 2rem;
+    background: #000; /* Dark background per design */
+    color: #fff;
+    text-align: center;
+}
+
+.testimonials h2 { font-size: 2.5rem; margin-bottom: 4rem; }
+
+.testimonials-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.quote-card { margin: 0; }
+.quote-card p { font-size: 1.3rem; margin-bottom: 2rem; font-style: italic; line-height: 1.4; }
+
+.brand-logo img {
+    height: 25px; /* FORCE LOGO HEIGHT */
+    width: auto;
+    filter: invert(1); /* Makes black logos white for dark background */
+}
+
+/* --- 7. Banner --- */
+.full-banner {
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.full-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .product-grid-2col, .category-grid, .testimonials-row, .split-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .split-section { height: auto; }
+    .split-image-container { height: 400px; }
+    
+    .reverse-mobile .split-content { order: 2; }
+    .reverse-mobile .split-image-container { order: 1; }
+    
+    .commute-text { margin-left: 0; padding: 3rem 2rem; }
+    .commute-text h1 { font-size: 2.2rem; }
+}
