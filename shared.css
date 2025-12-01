@@ -1,0 +1,139 @@
+/* Shared Styles for Veloretti Electric Bike Shop */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* Fonts - Using Nuckle font family (fallback to Inter/Roboto) */
+@font-face {
+    font-family: 'Nuckle';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Nuckle';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Nuckle';
+    src: url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+    font-weight: 600;
+}
+
+/* Color Variables */
+:root {
+    --nero: #FFFFFF;
+    --heavy-metal: #141615;
+    --heavy-metal-90: rgba(20, 22, 21, 0.9);
+    --heavy-metal-60: rgba(20, 22, 21, 0.6);
+    --heavy-metal-40: rgba(20, 22, 21, 0.4);
+    --heavy-metal-10: rgba(20, 22, 21, 0.1);
+    --black: #000000;
+    --black-87: rgba(0, 0, 0, 0.87);
+    --gallery: #F0F0F0;
+    --porcelain: #EBEDEE;
+    --parchment: #EFE1CB;
+    --pampas: #F4F1EC;
+    --nero-60: rgba(255, 255, 255, 0.6);
+    --nero-10: rgba(255, 255, 255, 0.1);
+    --nero-90: rgba(255, 255, 255, 0.9);
+    --nero-0-2: rgba(255, 255, 255, 0);
+    --nero-40: rgba(255, 255, 255, 0.4);
+    --kangaroo: #C6C7B8;
+    --nobel: #B6B6B6;
+    --ebb: #EDEAE8;
+    --silver: #C4C4C4;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nuckle', 'Inter', sans-serif;
+    font-style: medium;
+    background-color: var(--nero);
+    color: var(--heavy-metal);
+    line-height: 1.5;
+    letter-spacing: 0%;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nuckle', 'Inter', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 42px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+/* Button Styles */
+.btn {
+    padding: 11px 20px;
+    border-radius: 80px;
+    border: 1px solid var(--nero-10);
+    background: transparent;
+    font-family: 'Nuckle', 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: var(--heavy-metal);
+    color: var(--nero);
+    border-color: var(--nero-40);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Input Styles */
+input, textarea, select {
+    font-family: 'Nuckle', 'Inter', sans-serif;
+    padding: 23px 21px 20px;
+    border: 1px solid var(--heavy-metal-10);
+    border-radius: 2px;
+    background: var(--nero);
+    font-size: 12px;
+    line-height: 1.2;
+    color: var(--heavy-metal-90);
+    width: 100%;
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--heavy-metal-90);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+img {
+   
+    height: auto;
+    display: block;
+}
+
