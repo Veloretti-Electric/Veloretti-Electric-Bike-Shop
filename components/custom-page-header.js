@@ -1,8 +1,10 @@
 /**
  * Custom Element: <custom-page-header>
  */
-class CustomPageHeader extends HTMLElement {
-    constructor() {
+class CustomPageHeader extends HTMLElement 
+{
+    constructor() 
+    {
         super();
         this.attachShadow({ mode: 'open' });
 
@@ -19,6 +21,7 @@ class CustomPageHeader extends HTMLElement {
                 .header {
                     background: var(--nero, #fff);
                     width: 100%;
+                    color:transparent ;
                     border-bottom: 1px solid rgba(0,0,0,0.1);
                     position: relative; /* Needed for absolute menu positioning */
                 }

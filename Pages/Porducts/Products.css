@@ -27,22 +27,6 @@ img {
     height: auto;
 }
 
-/* --- 1. Hero Section --- */
-.hero-top {
-    width: 100%;
-    height: 80vh; /* Taller hero */
-    position: relative;
-}
-
-.hero-bg {
-    width: 100%;
-    height: 100%;
-    background-color: #e0e0e0;
-    /* Since you are using a DIV, you must set the image here in CSS */
-    background-image: url('../../Images/Man-riding-Veloretti-Electric-Ace-Two-Matte-Black.jpg'); /* REPLACE WITH YOUR HERO IMAGE PATH */
-    background-size: cover;
-    background-position: center;
-}
 
 /* --- 2. Electric Bikes --- */
 .electric-bikes {
@@ -81,6 +65,71 @@ img {
     padding: 1rem;
     overflow: hidden; /* Keeps image inside */
 }
+
+
+.hero-top {
+    width: 100%;
+    height: 85vh; /* Increased height for a more cinematic look */
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg {
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a; /* Dark fallback color */
+    
+    /* Ensure this points to your studio background image */
+    background-image: url('../../Images/Main-image.png'); 
+    background-size: cover;
+    background-position: center;
+    
+    /* Layout for the text overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers the text */
+    align-items: flex-start; /* Aligns text to the left */
+    padding-left: 10%;       /* Matches the left spacing in your image */
+    position: relative;
+}
+
+/* Optional: Adds a subtle gradient overlay to make text pop against the background */
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 60%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: #ffffff; /* White text */
+    max-width: 300px; /* Prevents text from hitting the bikes */
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Spacing for the 'VELORETTI ELECTRIC' look */
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+.hero-title {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    font-weight: 400; /* Regular weight, not bold, matches the sleek design */
+    text-transform: capitalize;
+}
+
+
 
 .product-img {
     max-height: 350px; /* Limits height so buttons fit */
@@ -240,7 +289,7 @@ img {
     flex-grow: 1;
     width: 100%;
     height: 200px;
-    object-fit: contain; /* Shows whole item */
+    object-fit: cover; /* Shows whole item */
     margin: 1rem 0;
     z-index: 1;
 }
@@ -257,6 +306,13 @@ img {
     z-index: 2;
 }
 
+.btn-pill-small:hover
+{
+  
+   color: white;
+   background-color: black;
+   
+}
 /* --- 4. Commute & Map --- */
 .commute-text {
     padding: 6rem 2rem;
@@ -467,5 +523,17 @@ img {
     
     .split-content h2 {
         font-size: 2.5rem; /* Smaller heading on mobile */
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-bg {
+        padding-left: 2rem;
+        background-position: 65% center; /* Shifts image slightly to keep bikes visible */
+    }
+    
+    .hero-title {
+        font-size: 1rem;
     }
 }
