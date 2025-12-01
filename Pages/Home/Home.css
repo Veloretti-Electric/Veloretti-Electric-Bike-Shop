@@ -1130,3 +1130,167 @@
     max-width: 24px;
     max-height: 24px;
 }
+
+
+
+/* =========================================
+   RESPONSIVE STYLES (Add to bottom of CSS)
+   ========================================= */
+
+/* 1. Global Resets for Mobile */
+/* Prevents horizontal scrolling caused by 100vw */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 992px) {
+    
+ 
+    /* 3. Hero Section */
+    .hero-section {
+        height: auto; /* Let content dictate height */
+        min-height: 60vh;
+        background-position: center;
+    }
+
+    .hero-container {
+        padding: 40px 20px;
+    }
+
+    /* 4. About & Free Charge Sections (The Split Layouts) */
+    .about-section, 
+    .free-charge-section {
+        flex-direction: column; /* Stack image and text vertically */
+        height: auto; /* Remove fixed height */
+        padding: 40px 20px;
+        width: 100%;
+    }
+
+    /* Fix Images in split sections */
+    .about-section img,
+    .free-charge-section main img {
+        width: 100%; /* Full width */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 400px; /* Prevent it from being too tall */
+        margin: 0 0 30px 0; /* Add space below image */
+        object-fit: cover;
+    }
+
+    /* Fix Text Side in split sections */
+    .about-section aside,
+    .free-charge-section aside {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        text-align: left; /* Optional: Center text on mobile if preferred */
+    }
+
+    /* 5. Image Section */
+    .image-section {
+        height: 40vh; /* Smaller height for mobile */
+        background-attachment: scroll; /* better performance on mobile */
+    }
+
+    /* 6. How It Works Section */
+    .how-it-works-container {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .how-it-works-section .steps-content {
+        padding: 0;
+        margin-bottom: 40px;
+    }
+    
+    .how-it-works-section .steps-content h1,
+    .how-it-works-section .steps-content .steps-list {
+        max-width: 100%; /* Allow full width text */
+    }
+
+    .how-it-works-image {
+        width: 100%; /* Full width image */
+        height: 300px;
+        border-radius: 10px;
+    }
+
+    /* 7. Featured Bikes (Product Grid) */
+    .product-grid {
+        flex-direction: column; /* Stack bikes vertically */
+        padding: 0 20px;
+        gap: 40px;
+    }
+
+    .product-grid > li {
+        max-width: 100%; /* Card takes full width */
+    }
+
+    .image-carousel figure {
+        height: auto; /* Adjust height based on image */
+        min-height: 300px;
+    }
+
+    .image-carousel img {
+        max-width: 80%; /* Ensure bike fits inside */
+    }
+
+    /* 8. Contact Form */
+    .contact-section {
+        padding: 60px 20px;
+    }
+    
+    .section-heading {
+        font-size: 32px; /* Smaller heading */
+        margin-bottom: 30px;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    /* 9. FAQ Section */
+    .section-heading-large {
+        font-size: 36px; /* Adjust huge text */
+        padding: 40px 20px 0;
+    }
+    
+    .faq-container {
+        padding: 0 20px;
+    }
+
+    .accordion-button span:first-child {
+        font-size: 18px; /* Smaller question text */
+    }
+
+    /* 10. Footer */
+    .footer-container, 
+    .footer-custom-wrapper {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .footer-menus {
+        flex-direction: column; /* Stack link columns */
+        padding: 0;
+        gap: 30px;
+    }
+
+    .footer-email-subscription {
+        padding: 0;
+        width: 100%;
+        flex: auto;
+    }
+}
+
+/* Extra tweak for very small screens (Phones) */
+@media screen and (max-width: 480px) {
+    .btn-outline, .button-none, .btn-primary {
+        width: 100%; /* Full width buttons are easier to tap */
+    }
+    
+    .heading-3 {
+        font-size: 32px;
+    }
+}
