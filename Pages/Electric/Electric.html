@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloretti Electric - Clone</title>
+    <style>
+        /* --- 1. RESET & VARIABLES --- */
+        :root {
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --color-black: #000000;
+            --color-white: #ffffff;
+            --color-text: #111111;
+            --color-grey-bg: #f5f5f5;
+            --color-grey-text: #666666;
+            --color-discount: #d32f2f;
+            --btn-radius: 50px;
+            --max-width: 1440px;
+            --spacing-section: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-text);
+            background-color: #fff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+        a:hover { opacity: 0.7; }
+        
+        button { font-family: inherit; cursor: pointer; }
+
+        /* Utility: Image Placeholder */
+        .img-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- 2. HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 90vh;
+            width: 100%;
+            margin-bottom: 60px;
+            background-color: #ccc;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            width: 100%;
+            background: rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-pill {
+            padding: 14px 40px;
+            border-radius: var(--btn-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid #fff;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .btn-white { background-color: #fff; color: #000; }
+        .btn-transparent { background-color: transparent; color: #fff; }
+        .btn-transparent:hover { background-color: #fff; color: #000; }
+
+
+        /* --- 3. PRODUCT GRID --- */
+        .products-section { padding-bottom: var(--spacing-section); }
+        .section-header { margin-bottom: 40px; }
+        .section-header h2 { font-size: 2rem; font-weight: 600; }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .product-card { display: flex; flex-direction: column; }
+        .product-image { aspect-ratio: 1 / 1; background-color: var(--color-grey-bg); margin-bottom: 20px; }
+        .product-info h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 15px; }
+
+        .product-footer { display: flex; align-items: flex-start; gap: 15px; }
+        .btn-buy-small {
+            background: var(--color-black); color: var(--color-white); border: none;
+            padding: 8px 28px; border-radius: var(--btn-radius); font-weight: 600; font-size: 0.9rem;
+        }
+
+        .price-container { display: flex; flex-direction: column; font-size: 0.9rem; }
+        .price-row { display: flex; gap: 8px; }
+        .price-old { text-decoration: line-through; color: #999; }
+        .price-new { font-weight: 600; }
+        .discount-text { color: var(--color-discount); font-weight: 600; font-size: 0.85rem; margin-top: 2px; }
+
+
+        /* --- 4. AWARD BANNER --- */
+        .award-banner {
+            text-align: center; padding: 60px 20px; background-color: #fafafa;
+            margin-bottom: var(--spacing-section);
+        }
+        .award-banner h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 10px; }
+        .award-banner p { color: var(--color-grey-text); }
+
+
+        /* --- 5. MEET ACE / IVY --- */
+        .feature-split { display: flex; width: 100%; min-height: 600px; margin-bottom: var(--spacing-section); }
+        .feature-text { width: 50%; display: flex; flex-direction: column; justify-content: center; padding: 80px; background: #fff; }
+        .feature-image { width: 50%; background-color: var(--color-grey-bg); position: relative; }
+        .feature-title { font-size: 3rem; font-weight: 700; margin-bottom: 24px; line-height: 1; }
+        .feature-desc { font-size: 1.1rem; line-height: 1.6; color: #444; max-width: 450px; margin-bottom: 30px; }
+        .link-arrow { font-weight: 700; border-bottom: 2px solid #000; padding-bottom: 2px; display: inline-block; width: fit-content; font-size: 0.95rem; }
+        .feature-split.reverse { flex-direction: row-reverse; }
+        .feature-split.reverse .feature-text { padding-left: 100px; }
+
+
+        /* --- 6. TEST RIDE BANNER --- */
+        .test-ride-banner {
+            background-color: var(--color-grey-bg); text-align: center; padding: 100px 20px;
+            margin-bottom: var(--spacing-section);
+        }
+        .test-ride-banner h2 { font-size: 2.5rem; font-weight: 600; margin-bottom: 20px; }
+        .test-ride-banner p { max-width: 600px; margin: 0 auto 30px; color: #555; font-size: 1.1rem; }
+
+
+        /* --- 7. INFO GRID (UPDATED DESIGN) --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+            gap: 24px; /* Slightly tighter gap */
+            padding-bottom: 120px;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .info-card-image {
+            width: 100%;
+            aspect-ratio: 3 / 4; /* Portrait Aspect Ratio */
+            background-color: #f5f5f5;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem; /* Large Bold Title */
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #000;
+            line-height: 1.2;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 24px;
+        }
+
+        .link-underlined {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #000;
+            text-decoration: underline;
+            text-underline-offset: 4px; /* Veloretti signature underline gap */
+            transition: opacity 0.2s;
+        }
+        .link-underlined:hover { opacity: 0.7; }
+
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-text { padding: 40px; }
+            .feature-split.reverse .feature-text { padding: 40px; }
+            .info-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .hero-title { font-size: 2.5rem; }
+            .product-grid { grid-template-columns: 1fr; }
+            .feature-split, .feature-split.reverse { flex-direction: column; height: auto; }
+            .feature-text, .feature-image { width: 100%; }
+            .feature-image { height: 400px; }
+            .feature-text { padding: 60px 20px; }
+            
+            .info-grid { grid-template-columns: 1fr; gap: 60px; }
+            .info-grid { padding-left: 20px; padding-right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <custom-header></custom-header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-bg img-placeholder">HERO IMAGE</div>
+            <div class="hero-overlay">
+                <p class="hero-subtitle">Black Friday weekend</p>
+                <h1 class="hero-title">Exclusive offers on the Electric Two</h1>
+                <p class="hero-desc">Save up to €400 on the Pro and €200 on the Lite — plus free shipping</p>
+                <div class="hero-buttons">
+                    <button class="btn-pill btn-white">Buy</button>
+                    <button class="btn-pill btn-transparent">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="container products-section">
+            <div class="section-header">
+                <h2>Explore</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image"><div class="img-placeholder">IVY TWO LITE</div></div>
+                    <div class="product-info">
+                        <h3>Ivy Two Lite</h3>
+                        <div class="product-footer">
+                            <button class="btn-buy-small">Buy</button>
+                            <div class="price-container">
+                                <div class="price-row"><span class="price-old">€ 2.099,00</span><span class="price-new">€ 1.899,00</span></div>
+                                <span class="discount-text">€200 off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><div class="img-placeholder">ACE TWO LITE</div></div>
+                    <div class="product-info">
+                        <h3>Ace Two Lite</h3>
+                        <div class="product-footer">
+                            <button class="btn-buy-small">Buy</button>
+                            <div class="price-container">
+                                <div class="price-row"><span class="price-old">€ 2.099,00</span><span class="price-new">€ 1.899,00</span></div>
+                                <span class="discount-text">€200 off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><div class="img-placeholder">IVY TWO</div></div>
+                    <div class="product-info">
+                        <h3>Ivy Two</h3>
+                        <div class="product-footer">
+                            <button class="btn-buy-small">Buy</button>
+                            <div class="price-container">
+                                <div class="price-row"><span class="price-old">€ 2.599,00</span><span class="price-new">€ 2.399,00</span></div>
+                                <span class="discount-text">Up to €400 off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image"><div class="img-placeholder">ACE TWO</div></div>
+                    <div class="product-info">
+                        <h3>Ace Two</h3>
+                        <div class="product-footer">
+                            <button class="btn-buy-small">Buy</button>
+                            <div class="price-container">
+                                <div class="price-row"><span class="price-old">€ 2.599,00</span><span class="price-new">€ 2.399,00</span></div>
+                                <span class="discount-text">Up to €400 off</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="award-banner">
+            <div class="container">
+                <h2>Electric Two</h2>
+                <p>Award-winning design</p>
+            </div>
+        </section>
+
+        <section class="feature-split">
+            <div class="feature-text">
+                <h2 class="feature-title">Meet Ace</h2>
+                <p class="feature-desc">A step‑over frame electric bike for confident, supported, and fast‑paced city riding. The Ace Two pairs clean design with fully integrated features, crafted for riders who value performance, precision, and presence on the road.</p>
+                <a href="#" class="link-arrow">Explore Ace</a>
+            </div>
+            <div class="feature-image"><div class="img-placeholder">ACE LIFESTYLE</div></div>
+        </section>
+
+        <section class="feature-split reverse">
+            <div class="feature-text">
+                <h2 class="feature-title">Meet Ivy</h2>
+                <p class="feature-desc">With its low step‑through frame and refined design, the Ivy Two is built for ease and confidence on every city ride. Its comfortable geometry makes getting on and off effortless, while fully integrated features deliver a consistent and reliable experience.</p>
+                <a href="#" class="link-arrow">Explore Ivy</a>
+            </div>
+            <div class="feature-image"><div class="img-placeholder">IVY LIFESTYLE</div></div>
+        </section>
+
+        <section class="test-ride-banner">
+            <div class="container">
+                <h2>Test ride the Electric Two</h2>
+                <p>Want to experience the Ivy or Ace Two up close? Book a test ride at one of our partner locations.</p>
+                <button class="btn-buy-small" style="padding: 12px 32px; font-size: 0.95rem;">Find a store</button>
+            </div>
+        </section>
+
+        <section class="info-grid">
+            <div class="info-card">
+                <div class="info-card-image">
+                    <div class="img-placeholder">INSURANCE</div>
+                </div>
+                <h3>Ride carefree</h3>
+                <p>Our Qover x Veloretti insurance gives you peace of mind from day one. It covers theft, damage, and roadside assistance, so you can focus on the ride, not the what-ifs.</p>
+                <a href="#" class="link-underlined">Learn more</a>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-image">
+                    <div class="img-placeholder">LEASING</div>
+                </div>
+                <h3>Leasing made easy</h3>
+                <p>If your Dutch employer offers a bike scheme, you may be able to lease a Veloretti Ivy or Ace Two and benefit from tax advantages.</p>
+                <a href="#" class="link-underlined">Learn more</a>
+            </div>
+
+            <div class="info-card">
+                <div class="info-card-image">
+                    <div class="img-placeholder">PARTNER STORES</div>
+                </div>
+                <h3>Discover your local Veloretti partner store</h3>
+                <p>Our partner stores across the Netherlands are there for you. Whether you're looking to pick up a newly ordered bike or need a fix.</p>
+                <a href="#" class="link-underlined">Find a store</a>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+</body>
+</html>

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Veloretti's collection of kids bikes. From tricycles to junior bikes, designed to grow with your child.">
+    <title>Kids Bikes | Veloretti Clone</title>
+    
+    <script defer src="../../components/custom-page-header.js"></script>
+    <script defer src="../../components/custom-footer.js"></script>
+    <link rel="stylesheet" href="../../shared.css">
+    
+    <style>
+        /* --- 1. CONFIGURATION & RESET --- */
+        :root {
+            /* Typography */
+            --font-primary: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            
+            /* Colors */
+            --color-text-main: #111111;
+            --color-text-light: #666666;
+            --color-bg-white: #ffffff;
+            --color-bg-grey: #f4f4f4;
+            --color-accent-sale: #d9534f;
+            --color-btn-bg: #000000;
+            --color-btn-text: #ffffff;
+
+            /* Spacing & Layout */
+            --spacing-section: 80px;
+            --container-width: 1400px;
+            --gap-grid: 20px;
+            --gap-tight: 2px;
+            
+            /* UI Elements */
+            --radius-btn: 50px;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-text-main);
+            background-color: var(--color-bg-white);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img, video {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; border: none; cursor: pointer; }
+
+        /* --- 2. UTILITIES --- */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 75vh;
+            background-color: var(--color-bg-grey);
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero__video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* FIX: Ensure video stays centered */
+            object-position: center center;
+        }
+
+        /* --- 4. PRODUCT GRID --- */
+        .products { margin-bottom: var(--spacing-section); }
+
+        .products__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--gap-grid);
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .card__media {
+            background-color: var(--color-bg-grey);
+            aspect-ratio: 1 / 1;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* FIX: Center products perfectly */
+            object-position: center center;
+        }
+
+        .card__content h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .card__actions {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .btn--buy {
+            background-color: var(--color-btn-bg);
+            color: var(--color-btn-text);
+            padding: 10px 32px;
+            border-radius: var(--radius-btn);
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-width: 80px;
+            transition: opacity 0.2s ease;
+        }
+        .btn--buy:hover { opacity: 0.8; }
+
+        .price-group { display: flex; flex-direction: column; font-size: 0.9rem; line-height: 1.4; }
+        .price-group__values { display: flex; gap: 8px; }
+        .price--old { text-decoration: line-through; color: var(--color-text-light); }
+        .price--new { font-weight: 600; }
+        .badge--sale { color: var(--color-accent-sale); font-size: 0.85rem; font-weight: 600; }
+
+        /* --- 5. GALLERY & LIFESTYLE SECTIONS --- */
+        
+        /* 3-Column Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 0 40px; 
+            max-width: var(--container-width);
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        
+        .gallery-grid__item {
+            background-color: var(--color-bg-grey);
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        
+        .gallery-grid__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* FIX: Anchor image to TOP so heads aren't cut off */
+            object-position: top center; 
+        }
+
+        /* Split Lifestyle (2 Large Images) */
+        .lifestyle-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap-tight);
+            width: 100%;
+            margin-bottom: var(--spacing-section);
+        }
+
+        .lifestyle-split__item {
+            background-color: var(--color-bg-grey);
+            height: 650px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .lifestyle-split__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* FIX: Anchor image to TOP so heads aren't cut off */
+            object-position: top center;
+        }
+
+        /* --- 6. FEATURE BLOCKS --- */
+        .feature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 40px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            gap: 80px;
+        }
+
+        .feature__media {
+            flex: 1;
+            aspect-ratio: 1 / 1;
+            background-color: var(--color-bg-grey);
+            overflow: hidden;
+        }
+
+        .feature__media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .feature__content { flex: 1; max-width: 500px; }
+        .feature__title { font-size: 2.5rem; font-weight: 500; margin-bottom: 24px; line-height: 1.1; }
+        .feature__text { font-size: 1rem; color: #333; line-height: 1.6; }
+        
+        .feature--reverse { flex-direction: row-reverse; }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            .products__grid { grid-template-columns: repeat(2, 1fr); }
+            .hero { height: 60vh; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .section-title { font-size: 2rem; }
+
+            .products__grid { grid-template-columns: 1fr; }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .lifestyle-split {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                height: auto;
+            }
+            .lifestyle-split__item { height: 450px; }
+
+            .feature, .feature--reverse {
+                flex-direction: column;
+                gap: 40px;
+                padding: 40px 20px;
+            }
+            .feature__title { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <custom-page-header></custom-page-header>
+
+    <main>
+        
+        <section class="hero" aria-label="Hero Video">
+            <video class="hero__video" autoplay loop muted playsinline>
+                <source src="https://player.vimeo.com/progressive_redirect/playback/1091129139/rendition/720p/file.mp4?loc=external&signature=7efd2dd0e9440f2265133e17d7350dfd1d853e77b0d6dbe386a721f34f11fe7c" type="video/mp4">
+            </video>
+        </section>
+
+        <section class="container products" aria-labelledby="products-heading">
+            <h2 id="products-heading" class="section-title">Explore our kids bikes</h2>
+
+            <div class="products__grid">
+                <article class="card">
+                    <figure class="card__media">
+                        <img src="../../Images/Tricycle-Bananarama-Yellow.webp" alt="Yellow Veloretti Tricycle" loading="lazy">
+                    </figure>
+                    <div class="card__content">
+                        <h3>Tricycle</h3>
+                        <div class="card__actions">
+                            <button class="btn--buy" aria-label="Buy Tricycle">Buy</button>
+                            <div class="price-group">
+                                <div class="price-group__values">
+                                    <span class="price--old">€ 129,00</span>
+                                    <span class="price--new">€ 109,65</span>
+                                </div>
+                                <span class="badge--sale">15% off</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <figure class="card__media">
+                        <img src="../../Images/Mini-Pebble_Grey-yello.webp" alt="Pebble Grey Mini Balance Bike" loading="lazy">
+                    </figure>
+                    <div class="card__content">
+                        <h3>Mini</h3>
+                        <div class="card__actions">
+                            <button class="btn--buy" aria-label="Buy Mini">Buy</button>
+                            <div class="price-group">
+                                <div class="price-group__values">
+                                    <span class="price--old">€ 105,00</span>
+                                    <span class="price--new">€ 89,25</span>
+                                </div>
+                                <span class="badge--sale">15% off</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <figure class="card__media">
+                        <img src="../../Images/Maxi-Desert_Moss.webp" alt="Desert Moss Maxi Bike" loading="lazy">
+                    </figure>
+                    <div class="card__content">
+                        <h3>Maxi</h3>
+                        <div class="card__actions">
+                            <button class="btn--buy" aria-label="Buy Maxi">Buy</button>
+                            <div class="price-group">
+                                <div class="price-group__values">
+                                    <span class="price--old">€ 259,00</span>
+                                    <span class="price--new">€ 220,15</span>
+                                </div>
+                                <span class="badge--sale">15% off</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <figure class="card__media">
+                        <img src="../../Images/Junior-Blazing_Salmon.webp" alt="Blazing Salmon Junior Bike" loading="lazy">
+                    </figure>
+                    <div class="card__content">
+                        <h3>Junior</h3>
+                        <div class="card__actions">
+                            <button class="btn--buy" aria-label="Buy Junior">Buy</button>
+                            <div class="price-group">
+                                <div class="price-group__values">
+                                    <span class="price--old">€ 299,00</span>
+                                    <span class="price--new">€ 254,15</span>
+                                </div>
+                                <span class="badge--sale">15% off</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="gallery-grid" aria-label="Lifestyle Gallery">
+            <figure class="gallery-grid__item">
+                <img src="../../Images/Veloriti-small-girl.webp" alt="Girl riding Veloretti" loading="lazy">
+            </figure>
+            <figure class="gallery-grid__item">
+                <img src="../../Images/Boys-In-Veloriti.webp" alt="Boys riding Veloretti bikes" loading="lazy">
+            </figure>
+            <figure class="gallery-grid__item">
+                <img src="../../Images/Boy-Veloriti2.webp" alt="Child on balance bike" loading="lazy">
+            </figure>
+        </section>
+
+        <section class="lifestyle-split" aria-label="Large Lifestyle Images">
+            <figure class="lifestyle-split__item">
+                <img src="../../Images/china-girl-veloriti.webp" alt="Lifestyle shot 1" loading="lazy">
+            </figure>
+            <figure class="lifestyle-split__item">
+                <img src="../../Images/green-velority-boy.webp" alt="Lifestyle shot 2" loading="lazy">
+            </figure>
+        </section>
+
+        <section class="feature">
+            <figure class="feature__media">
+                <img src="../../Images/white-small-velority-kids.webp" alt="White Veloretti Kids Bike" loading="lazy">
+            </figure>
+            <div class="feature__content">
+                <h2 class="feature__title">Designed to grow</h2>
+                <p class="feature__text">
+                    From balance bikes to first pedals, every model in our kids collection is made to evolve with your child. Adjustable frames, smart geometry, and convertible features ensure each bike fits just right, today and a little while longer. It's a collection built for their pace, not just their size.
+                </p>
+            </div>
+        </section>
+
+        <section class="feature feature--reverse">
+            <figure class="feature__media">
+                <img src="../../Images/Black-small-veloriti.webp" alt="Black Veloretti Kids Bike" loading="lazy">
+            </figure>
+            <div class="feature__content">
+                <h2 class="feature__title">Modern design, made playful</h2>
+                <p class="feature__text">
+                    Clean lines, soft curves, and pastel colourways make each bike feel distinctly Veloretti, just in a smaller size. Every model is designed to feel familiar in your home and on the street. It's our design philosophy, reimagined for little riders.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <custom-footer></custom-footer>
+
+</body>
+</html>

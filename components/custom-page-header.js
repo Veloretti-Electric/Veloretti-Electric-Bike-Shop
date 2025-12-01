@@ -86,7 +86,6 @@ class CustomPageHeader extends HTMLElement
                     content: '';
                     width: 10px;
                     height: 6px;
-                    background-image: url("data:image/svg+xml,%3Csvg width='11' height='6' viewBox='0 0 11 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5.5 5L10 1' stroke='%23141615' stroke-width='2'/%3E%3C/svg%3E");
                     background-size: contain;
                     background-repeat: no-repeat;
                 }
