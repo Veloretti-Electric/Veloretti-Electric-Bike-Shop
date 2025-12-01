@@ -102,10 +102,78 @@ img {
 
 .card-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes content to edges */
     align-items: center;
     margin-top: 1rem;
+    width: 100%;
 }
+
+
+.footer-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between Buy button and Colors */
+}
+
+/* --- Radio Button Styling --- */
+.color-selector {
+    display: flex;
+    gap: 8px;
+}
+
+.color-option {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Hide the actual ugly radio circle */
+.color-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* The visual circle */
+.swatch {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: block;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+    box-shadow: inset 0 0 0 2px #fff; /* Creates an inner white ring */
+}
+
+/* Define Colors */
+.swatch.black { background-color: #000; }
+.swatch.grey { background-color: #777; }
+.swatch.beige { background-color: #D2C4B4; }
+
+/* --- Selected State (The "Active" Radio) --- */
+.color-option input[type="radio"]:checked + .swatch {
+    border-color: #000;     /* Outer ring turns black */
+    transform: scale(1.1);  /* Slightly larger */
+    box-shadow: inset 0 0 0 3px #fff; /* Thicker white gap */
+}
+
+/* --- Learn More Link --- */
+.learn-more-link {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s;
+}
+
+.learn-more-link:hover {
+    border-bottom: 1px solid var(--text-main);
+}
+
 
 .btn-pill {
     background: white;
@@ -209,39 +277,67 @@ img {
     display: block;
 }
 
-/* --- 5. Split Sections (THE FIX FOR "NOT COVERING") --- */
+/* --- 5. Split Sections (Updated to match image layout) --- */
 .split-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 600px; /* Fixed height is required for 'cover' to work */
+    /* height: 600px;  <-- REMOVED fixed height */
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; <-- REMOVED */
+    /* border: 1px solid blue; <-- REMOVED debug border */
+    
+    align-items: center; /* Vertically centers text and image */
+    padding: 8rem 2rem; /* Adds the large top/bottom margin seen in the image */
+    max-width: 1400px;   /* Keeps content within a reasonable max-width */
+    margin: 0 auto;      /* Centers the section on the page */
+    gap: 5rem;           /* Creates space between the text and image */
 }
 
 .split-image-container {
     width: 100%;
-    height: 100%;
-    margin: 0;
+    /* height: 100%; <-- REMOVED */
+    /* margin-bottom: 5vw; <-- REMOVED */
     position: relative;
+    margin: 0;
 }
 
 .split-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* This makes the image fill the box perfectly */
-    object-position: center;
+    /* height: 100%; <-- REMOVED */
+    /* object-fit: cover; <-- REMOVED, image now has natural height */
+    /* object-position: center; <-- REMOVED */
+    
+    display: block;
+    height: auto;       /* Allows image to be its natural height */
+    max-height: 700px;  /* Optional: Prevents image from getting too tall on large screens */
+    object-fit: contain;
 }
 
 .split-content {
-    padding: 5rem;
+    /* padding: 5rem; <-- REMOVED old padding */
+    padding: 0; /* Remove padding, rely on grid gap */
     display: flex;
     flex-direction: column;
     justify-content: center;
     background: white;
+    text-align: left;
 }
 
-.split-content h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-.split-content p { font-size: 1.1rem; color: var(--text-grey); margin-bottom: 2rem; max-width: 450px; }
+/* Typography updates to match the image's style more closely */
+.split-content h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.split-content p {
+    font-size: 1.125rem;
+    color: var(--text-grey);
+    margin-bottom: 3rem;
+    max-width: 480px; /* Limits line length for better readability */
+    line-height: 1.6;
+}
 
 .link-arrow {
     text-decoration: none;
@@ -250,60 +346,126 @@ img {
     border-bottom: 2px solid var(--text-main);
     padding-bottom: 3px;
     width: fit-content;
+    font-size: 1rem;
 }
-
 /* --- 6. Testimonials (FIX FOR LOGOS) --- */
 .testimonials {
     padding: 6rem 2rem;
-    background: #000; /* Dark background per design */
-    color: #fff;
-    text-align: center;
-}
-
-.testimonials h2 { font-size: 2.5rem; margin-bottom: 4rem; }
-
-.testimonials-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4rem;
-    max-width: 1200px;
+    background: #ffffff; /* Changed to White */
+    color: #111;         /* Changed to Black */
+    max-width: 1400px;
     margin: 0 auto;
 }
 
-.quote-card { margin: 0; }
-.quote-card p { font-size: 1.3rem; margin-bottom: 2rem; font-style: italic; line-height: 1.4; }
-
-.brand-logo img {
-    height: 25px; /* FORCE LOGO HEIGHT */
-    width: auto;
-    filter: invert(1); /* Makes black logos white for dark background */
+.testimonials h2 {
+    font-size: 4rem; /* Large headline size */
+    font-weight: 400;
+    margin-bottom: 3rem;
+    text-align: left; /* Aligns title to the left */
+    letter-spacing: -1px;
 }
 
+.testimonials-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Equal Columns */
+    gap: 1.5rem; /* Space between the cards */
+}
+
+.quote-card {
+    background: #fff;
+    border: 1px solid #e5e5e5; /* The thin grey border */
+    padding: 3rem;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes content up and logo down */
+    min-height: 350px; /* Ensures all cards have a boxy shape */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Optional: Slight hover effect */
+.quote-card:hover {
+    border-color: #000;
+}
+
+.quote-card blockquote {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.quote-card p {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    color: #111;
+    font-style: normal; /* Removed italics to match image */
+    text-align: left;
+}
+
+.brand-logo {
+    margin-top: 2rem;
+    text-align: left; /* Aligns logo to left */
+}
+
+.brand-logo img {
+    height: 24px; /* Fixed height for consistency */
+    width: auto;
+    object-fit: contain;
+    /* Removed filter: invert(1); because background is now white */
+    display: block;
+}
+
+/* Mobile Responsiveness for this section */
+@media (max-width: 900px) {
+    .testimonials h2 {
+        font-size: 2.5rem;
+    }
+    
+    .testimonials-row {
+        grid-template-columns: 1fr; /* Stack cards on mobile */
+    }
+    
+    .quote-card {
+        min-height: auto; /* Let height adjust naturally on mobile */
+        gap: 2rem;
+    }
+}
 /* --- 7. Banner --- */
 .full-banner {
     width: 100%;
-    height: 70vh;
-    overflow: hidden;
+    height: auto;
+    display: block;
+    margin-bottom: 4rem;
 }
 
 .full-banner img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    object-fit: contain;
 }
 
 /* --- Responsive --- */
+/* --- Responsive --- */
 @media (max-width: 900px) {
-    .product-grid-2col, .category-grid, .testimonials-row, .split-section {
-        grid-template-columns: 1fr;
+    /* ... other existing responsive styles ... */
+    
+    .split-section {
+        grid-template-columns: 1fr; /* Stack columns */
+        padding: 4rem 2rem;         /* Reduce top/bottom padding on mobile */
+        gap: 3rem;                  /* Reduce gap */
+        height: auto;               /* Ensure height is auto */
     }
     
-    .split-section { height: auto; }
-    .split-image-container { height: 400px; }
+    .split-image-container {
+        height: auto; /* Reset height */
+        order: -1;    /* Moves image to the top */
+    }
+
+    /* Remove the old .reverse-mobile rules, they are replaced by the generic order above */
+    /* .reverse-mobile .split-content { order: 2; } */
+    /* .reverse-mobile .split-image-container { order: 1; } */
     
-    .reverse-mobile .split-content { order: 2; }
-    .reverse-mobile .split-image-container { order: 1; }
-    
-    .commute-text { margin-left: 0; padding: 3rem 2rem; }
-    .commute-text h1 { font-size: 2.2rem; }
+    .split-content h2 {
+        font-size: 2.5rem; /* Smaller heading on mobile */
+    }
 }
