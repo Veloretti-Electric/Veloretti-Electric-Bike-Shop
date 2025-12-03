@@ -8,7 +8,7 @@ Complete project description, features, and workflows for the Veloretti frontend
 - **Type:** Static marketing website with e-commerce functionality (frontend)
 - **Status:** Active development — frontend implemented, backend pending
 - **Technology:** HTML5, CSS3, Vanilla JavaScript, Web Components
-- **Repository:** `C:\Veloretti-Electric-Bike-Shop`
+- **URL** `https://veloretti-project.netlify.app/`
 
 Veloretti is a premium electric bicycle brand. This repository contains a frontend website that serves two main markets:
 
@@ -166,13 +166,3 @@ Veloretti-Electric-Bike-Shop/
 
 ### SEO
 Per-page: unique meta title/description, canonical URLs, robots meta, Open Graph and Twitter cards, correct heading hierarchy, alt text on images, semantic HTML.
-
----
-
-If you'd like, I can:
-
-- run a quick link/asset check across pages,
-- convert any inline notes into `TODO` issues, or
-- open a PR with this formatted `README.md`.
-
-Tell me which next step you prefer.
