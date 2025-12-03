@@ -75,8 +75,8 @@ class CustomFooter extends HTMLElement {
                             <h3 class="widget-title">Explorer</h3>
                             <ul class="footer-list">
                                 <li><a href="#">Electric bikes</a></li>
-                                <li><a href="#">City bikes</a></li>
-                                <li><a href="#">Kids' bikes</a></li>
+                                <li><a href="../../Pages/Cities/Cities.html">City bikes</a></li>
+                                <li><a href="../../Pages/Kids/Kids.html">Kids' bikes</a></li>
                                 <li><a href="#">Accessories</a></li>
                                 <li><a href="#">Outlet</a></li>
                                 <li><a href="#">Business</a></li>
@@ -89,7 +89,7 @@ class CustomFooter extends HTMLElement {
                         <div class="about-widget">
                             <h3 class="widget-title">About</h3>
                             <ul class="footer-list">
-                                <li><a href="../Pages/AboutUs/AboutUs.html">About us</a></li>
+                                <li><a href="../../Pages/AboutUs/AboutUs.html">About us</a></li>
                                 <li><a href="#">Journal</a></li>
                                 <li><a href="#">Reviews</a></li>
                                 <li><a href="#">Press</a></li>
