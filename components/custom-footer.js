@@ -367,7 +367,7 @@ class CustomFooter extends HTMLElement {
                         <div class="about-widget">
                             <h3 class="widget-title">About</h3>
                             <ul class="footer-list">
-                                <li><a href="#">About us</a></li>
+                                <li><a href="../Pages/AboutUs/AboutUs.html">About us</a></li>
                                 <li><a href="#">Journal</a></li>
                                 <li><a href="#">Reviews</a></li>
                                 <li><a href="#">Press</a></li>

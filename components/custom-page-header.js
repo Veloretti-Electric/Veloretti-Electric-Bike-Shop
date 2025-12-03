@@ -22,7 +22,6 @@ class CustomPageHeader extends HTMLElement
                     background: var(--nero, #fff);
                     width: 100%;
                     color:transparent ;
-                    border-bottom: 1px solid rgba(0,0,0,0.1);
                     position: relative; /* Needed for absolute menu positioning */
                 }
 
