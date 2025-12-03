@@ -1,4 +1,4 @@
-/* Cart Page Styles */
+﻿
 
 .cart-main {
     min-height: calc(100vh - 120px);
@@ -16,7 +16,7 @@
     margin-bottom: 80px;
 }
 
-/* Left Column: Cart Section */
+
 .cart-section {
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@
     border-bottom: 1px solid var(--heavy-metal-10);
 }
 
-/* Cart Item */
+
 .cart-item {
     display: flex;
     gap: 20px;
@@ -104,7 +104,7 @@
     color: var(--heavy-metal);
 }
 
-/* Insurance Section */
+
 .insurance-section {
     display: flex;
     align-items: center;
@@ -127,7 +127,7 @@
     color: var(--heavy-metal-90);
 }
 
-/* Right Column: Order Summary */
+
 .order-summary {
     background-color: var(--nero);
     border: 1px solid var(--heavy-metal-10);
@@ -191,7 +191,7 @@
     color: var(--heavy-metal);
 }
 
-/* Checkout Button */
+
 .checkout-button {
     width: 100%;
     padding: 16px 24px;
@@ -220,7 +220,7 @@
     height: 18px;
 }
 
-/* Payment Methods */
+
 .payment-methods {
     margin-top: 24px;
     padding-top: 24px;
@@ -261,7 +261,7 @@
     text-align: center;
 }
 
-/* Delivery Link */
+
 .delivery-link {
     display: block;
     margin-top: 24px;
@@ -279,7 +279,7 @@
     opacity: 0.7;
 }
 
-/* Complete Your Order Section */
+
 .complete-order-section {
     max-width: 1440px;
     margin: 0 auto;
@@ -317,7 +317,7 @@
 
 .accessory-image {
     width: 100%;
-    padding-top: 75%; /* Creates aspect ratio for consistent card heights */
+    padding-top: 75%; 
     background-color: var(--gallery);
     border-radius: 4px;
     overflow: hidden;
@@ -408,7 +408,7 @@
     color: var(--nero);
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 1200px) {
     .cart-container {
         grid-template-columns: 1fr 350px;
@@ -493,4 +493,5 @@
         font-size: 16px;
     }
 }
+
 

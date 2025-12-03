@@ -1,4 +1,4 @@
-/* Image Animation */
+﻿
 .animated-img {
     opacity: 0;
     transform: scale(0.96);
@@ -9,10 +9,10 @@
     opacity: 1;
     transform: scale(1);
 }
-/* Shared Styles for Veloretti Electric Bike Shop */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-/* Fonts - Using Nuckle font family (fallback to Inter/Roboto) */
+
 @font-face {
     font-family: 'Nuckle';
     src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
@@ -31,7 +31,7 @@
     font-weight: 600;
 }
 
-/* Color Variables */
+
 :root {
     --nero: #FFFFFF;
     --heavy-metal: #141615;
@@ -56,7 +56,7 @@
     --silver: #C4C4C4;
 }
 
-/* Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -72,14 +72,14 @@ body {
     letter-spacing: 0%;
 }
 
-/* Typography */
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Nuckle', 'Inter', sans-serif;
     font-weight: 600;
     line-height: 1.2;
 }
 
-/* Layout Utilities */
+
 .container {
     max-width: 1440px;
     margin: 0 auto;
@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 80px 0;
 }
 
-/* Button Styles */
+
 .btn {
     padding: 11px 20px;
     border-radius: 80px;
@@ -115,7 +115,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.9;
 }
 
-/* Input Styles */
+
 input, textarea, select {
     font-family: 'Nuckle', 'Inter', sans-serif;
     padding: 23px 21px 20px;
@@ -147,4 +147,5 @@ img {
     height: auto;
     display: block;
 }
+
 

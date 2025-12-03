@@ -1,16 +1,10 @@
-/**
- * Custom Element: <custom-page-header>
- */
-class CustomPageHeader extends HTMLElement 
-{
-    constructor() 
-    {
+class CustomPageHeader extends HTMLElement {
+    constructor() {
         super();
         this.attachShadow({ mode: 'open' });
 
         this.shadowRoot.innerHTML = `
             <style>
-                /* START: Header CSS */
                 :host {
                     display: block;
                     width: 100%;
@@ -21,14 +15,14 @@ class CustomPageHeader extends HTMLElement
                 .header {
                     background: var(--nero, #fff);
                     width: 100%;
-                    color:transparent ;
-                    position: relative; /* Needed for absolute menu positioning */
+                    color: transparent;
+                    position: relative;
                 }
 
                 :host([transparent]) .header {
                     background: transparent;
                     border-bottom: none;
-                    color  : white;
+                    color: white;
                 }
 
                 .nav-container {
@@ -41,252 +35,71 @@ class CustomPageHeader extends HTMLElement
                     height: 60px;
                     width: 100%;
                     box-sizing: border-box;
-                    background: #fff; /* Ensure background is solid */
+                    background: #fff;
                     position: relative;
-                    z-index: 1002; /* Higher than the dropdown menu */
+                    z-index: 1002;
                 }
 
                 :host([transparent]) .nav-container {
                     background: transparent;
                 }
 
-                /* LOGO */
-                .logo-img img {
-                    height: 14px;
-                    width: auto;
-                    display: block;
-                    filter: none;
-                }
+                .logo-img img { height: 14px; width: auto; display: block; filter: none; }
 
-                :host([transparent]) .logo-img img {
-                    filter: brightness(0) invert(1);
-                }
+                :host([transparent]) .logo-img img { filter: brightness(0) invert(1); }
 
-                /* NAVIGATION LINKS (Desktop) */
-                .nav-list {
-                    display: flex;
-                    align-items: center;
-                    list-style: none;
-                    padding: 0;
-                    margin: 0;
-                    gap: 15px;
-                }
-
-                .nav-item {
-                    display: flex;
-                    align-items: center;
-                }
+                .nav-list { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; gap: 15px; }
+                .nav-item { display: flex; align-items: center; }
 
                 .nav-button, .nav-link {
                     font-family: 'Nuckle', 'Inter', sans-serif;
-                    font-weight: 600;
-                    font-size: 16px;
-                    line-height: 1.25;
-                    letter-spacing: 0.05em;
-                    text-transform: uppercase;
-                    color: var(--heavy-metal, #141615);
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    gap: 5px;
-                    text-decoration: none;
-                    padding: 10px;
-                    white-space: nowrap;
+                    font-weight: 600; font-size: 16px; line-height: 1.25; letter-spacing: 0.05em;
+                    text-transform: uppercase; color: var(--heavy-metal, #141615);
+                    background: none; border: none; cursor: pointer; display: flex; align-items: center;
+                    gap: 5px; text-decoration: none; padding: 10px; white-space: nowrap;
                 }
 
-                :host([transparent]) .nav-button,
-                :host([transparent]) .nav-link {
-                    color: #fff;
-                }
+                :host([transparent]) .nav-button, :host([transparent]) .nav-link { color: #fff; }
 
-                .nav-button::after {
-                    content: '';
-                    width: 10px;
-                    height: 6px;
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                }
+                .nav-button::after { content: ''; width: 10px; height: 6px; background-size: contain; background-repeat: no-repeat; }
 
-                /* ICONS */
-                .nav-controls {
-                    display: flex;
-                    align-items: center;
-                    gap: 15px;
-                }
-                
-                .control-btn {
-                    position: relative;
-                    background-color:none;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    display: flex;
-                    align-items: center;
-                    width: 32px;
-                    height: 32px;
-                }
+                .nav-controls { display: flex; align-items: center; gap: 15px; }
 
-                .control-btn img {
-                    height: 100%;
-                    width: 100%;
-                    object-fit: contain;
-                    filter: none;
-                }
+                .control-btn { position: relative; background: none; border: none; cursor: pointer; display: flex; align-items: center; width: 32px; height: 32px; }
+                .control-btn img { height: 100%; width: 100%; object-fit: contain; filter: none; }
+                :host([transparent]) .control-btn img { filter: brightness(0) invert(1); }
 
-                :host([transparent]) .control-btn img {
-                    filter: brightness(0) invert(1);
-                }
+                .cart-badge { position: absolute; top: -4px; right: -4px; background-color: var(--heavy-metal, #141615); color: var(--nero, #fff); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-family: 'Nuckle', 'Inter', sans-serif; font-size: 11px; font-weight: 600; line-height: 1; }
 
-                /* Cart Badge */
-                .cart-badge {
-                    position: absolute;
-                    top: -4px;
-                    right: -4px;
-                    background-color: var(--heavy-metal, #141615);
-                    color: var(--nero, #fff);
-                    border-radius: 50%;
-                    width: 20px;
-                    height: 20px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-family: 'Nuckle', 'Inter', sans-serif;
-                    font-size: 11px;
-                    font-weight: 600;
-                    line-height: 1;
-                }
+                .language-dropdown { position: relative; }
 
-                /* Language Dropdown */
-                .language-dropdown {
-                    position: relative;
-                }
+                .language-menu { position: absolute; top: calc(100% + 10px); right: 0; background-color: var(--nero, #fff); border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 180px; padding: 8px 0; display: none; z-index: 1003; opacity: 0; transform: translateY(-10px); transition: opacity 0.2s ease, transform 0.2s ease; }
+                .language-menu.active { display: block; opacity: 1; transform: translateY(0); }
+                .language-menu-item { display: flex; align-items: center; gap: 12px; padding: 12px 20px; font-family: 'Nuckle', 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: var(--heavy-metal, #141615); text-decoration: none; cursor: pointer; transition: background-color 0.2s ease; }
+                .language-menu-item:hover { background-color: var(--gallery, #F0F0F0); }
+                .language-menu-item.active { background-color: var(--gallery, #F0F0F0); font-weight: 600; }
+                .language-menu-item img { width: 20px; height: 20px; object-fit: contain; }
 
-                .language-menu {
-                    position: absolute;
-                    top: calc(100% + 10px);
-                    right: 0;
-                    background-color: var(--nero, #fff);
-                    border: 1px solid rgba(0,0,0,0.1);
-                    border-radius: 4px;
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-                    min-width: 180px;
-                    padding: 8px 0;
-                    display: none;
-                    z-index: 1003;
-                    opacity: 0;
-                    transform: translateY(-10px);
-                    transition: opacity 0.2s ease, transform 0.2s ease;
-                }
+                .hamburger-btn { display: none; background: none; border: none; cursor: pointer; flex-direction: column; justify-content: space-around; width: 24px; height: 24px; padding: 0; margin-left: 15px; z-index: 1003; }
+                .hamburger-line { width: 100%; height: 2px; background-color: var(--heavy-metal, #141615); transition: all 0.3s linear; }
+                :host([transparent]) .hamburger-line { background-color: #fff; }
 
-                .language-menu.active {
-                    display: block;
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-
-                .language-menu-item {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    padding: 12px 20px;
-                    font-family: 'Nuckle', 'Inter', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    color: var(--heavy-metal, #141615);
-                    text-decoration: none;
-                    cursor: pointer;
-                    transition: background-color 0.2s ease;
-                }
-
-                .language-menu-item:hover {
-                    background-color: var(--gallery, #F0F0F0);
-                }
-
-                .language-menu-item.active {
-                    background-color: var(--gallery, #F0F0F0);
-                    font-weight: 600;
-                }
-
-                .language-menu-item img {
-                    width: 20px;
-                    height: 20px;
-                    object-fit: contain;
-                }
-
-                /* HAMBURGER MENU ICON */
-                .hamburger-btn {
-                    display: none;
-                    background: none;
-                    border: none;
-                    cursor: pointer;
-                    flex-direction: column;
-                    justify-content: space-around;
-                    width: 24px;
-                    height: 24px;
-                    padding: 0;
-                    margin-left: 15px;
-                    z-index: 1003;
-                }
-
-                .hamburger-line {
-                    width: 100%;
-                    height: 2px;
-                    background-color: var(--heavy-metal, #141615);
-                    transition: all 0.3s linear;
-                }
-
-                :host([transparent]) .hamburger-line {
-                    background-color: #fff;
-                }
-
-                /* ============================
-                   RESPONSIVE MEDIA QUERY 
-                   ============================ */
                 @media screen and (max-width: 992px) {
-                    .nav-container {
-                        padding: 0 20px;
-                    }
+                    .nav-container { padding: 0 20px; }
+                    .hamburger-btn { display: flex; }
 
-                    .hamburger-btn {
-                        display: flex;
-                    }
-
-                    /* MOBILE MENU STYLING */
                     .nav-list {
-                        display: none; /* Hidden by default */
-                        position: absolute;
-                        top: 60px; /* Push it below the header bar */
-                        left: 0;
-                        width: 100%;
-                        background-color: #ffffff;
-                        flex-direction: column; /* Stack items vertically */
-                        align-items: flex-start;
-                        padding: 20px 0;
-                        border-bottom: 1px solid rgba(0,0,0,0.1);
-                        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
-                        z-index: 1001;
+                        display: none; position: absolute; top: 60px; left: 0; width: 100%;
+                        background-color: #ffffff; flex-direction: column; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid rgba(0,0,0,0.1); box-shadow: 0 10px 15px rgba(0,0,0,0.05); z-index: 1001;
                     }
 
-                    /* CLASS TO SHOW MENU (Toggled by JS) */
-                    .nav-list.active {
-                        display: flex;
-                    }
+                    :host([transparent]) .nav-list { background-color: rgba(0,0,0,0.85); border-bottom: 1px solid rgba(255,255,255,0.08); box-shadow: 0 10px 25px rgba(0,0,0,0.45); }
+                    :host([transparent]) .nav-item { border-bottom-color: rgba(255,255,255,0.06); }
+                    :host([transparent]) .nav-button, :host([transparent]) .nav-link { color: #ffffff; }
 
-                    /* Style items in the mobile dropdown */
-                    .nav-item {
-                        width: 100%;
-                        border-bottom: 1px solid #f0f0f0;
-                    }
-
-                    .nav-button, .nav-link {
-                        width: 100%;
-                        padding: 15px 30px; /* Big click area */
-                        font-size: 16px;
-                        justify-content: space-between; /* Move arrow to right */
-                    }
-
+                    .nav-list.active { display: flex; }
+                    .nav-item { width: 100%; border-bottom: 1px solid #f0f0f0; }
+                    .nav-button, .nav-link { width: 100%; padding: 15px 30px; font-size: 16px; justify-content: space-between; }
                     .logo-img img { height: 12px; }
                     .language-dropdown { display: none; }
                     .nav-controls { gap: 5px; }
@@ -296,13 +109,11 @@ class CustomPageHeader extends HTMLElement
             <header class="header">
                 <nav class="nav">
                     <div class="nav-container">
-
                         <a href="/" class="logo-img" href="../../Index.html">
                             <img src="../../Images/Logo.png" alt="Veloretti Logo" loading="eager">
                         </a>
 
                         <ul class="nav-list" id="main-nav">
-                            
                             <li class="nav-item"><a href="../../Pages/Electric/Electric.html" class="nav-link">Electric</a></li>
                             <li class="nav-item"><a href="../../Pages/Cities/Cities.html" class="nav-link">City</a></li>
                             <li class="nav-item"><a href="../../Pages/Kids/Kids.html" class="nav-link">kids</a></li>
@@ -319,30 +130,15 @@ class CustomPageHeader extends HTMLElement
                                         <img src="../../Images/en.svg" alt="English" loading="eager">
                                         <span>English</span>
                                     </a>
-                                    <a href="#" class="language-menu-item" data-lang="nl">
-                                        <span>Nederlands</span>
-                                    </a>
-                                    <a href="#" class="language-menu-item" data-lang="de">
-                                        <span>Deutsch</span>
-                                    </a>
-                                    <a href="#" class="language-menu-item" data-lang="fr">
-                                        <span>Français</span>
-                                    </a>
+                                    <a href="#" class="language-menu-item" data-lang="nl"><span>Nederlands</span></a>
+                                    <a href="#" class="language-menu-item" data-lang="de"><span>Deutsch</span></a>
+                                    <a href="#" class="language-menu-item" data-lang="fr"><span>Français</span></a>
                                 </div>
                             </div>
-                            <button class="control-btn account-btn"  OnClick="window.location.href='../../Pages/Profile/Profile.html'">
-                                <img src="../../Images/person.svg" alt="Account settings" loading="eager">
-                            </button>
-                            <button class="control-btn cart-btn" OnClick="window.location.href='../../Pages/Cart/Cart.html'">
-                                <img src="../../Images/purshase.svg" alt="Shopping cart" loading="eager">
-                                <span class="cart-badge">1</span>
-                            </button>
+                            <button class="control-btn account-btn" OnClick="window.location.href='../../Pages/Profile/Profile.html'"><img src="../../Images/person.svg" alt="Account settings" loading="eager"></button>
+                            <button class="control-btn cart-btn" OnClick="window.location.href='../../Pages/Cart/Cart.html'"><img src="../../Images/purshase.svg" alt="Shopping cart" loading="eager"><span class="cart-badge">1</span></button>
 
-                            <button class="hamburger-btn" id="mobile-menu-trigger">
-                                <span class="hamburger-line"></span>
-                                <span class="hamburger-line"></span>
-                                <span class="hamburger-line"></span>
-                            </button>
+                            <button class="hamburger-btn" id="mobile-menu-trigger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
                         </div>
 
                     </div>
@@ -357,65 +153,40 @@ class CustomPageHeader extends HTMLElement
         const languageTrigger = this.shadowRoot.getElementById('language-trigger');
         const languageMenu = this.shadowRoot.getElementById('language-menu');
         const languageItems = this.shadowRoot.querySelectorAll('.language-menu-item');
-        
-        // Hamburger menu toggle
+
         hamburger.addEventListener('click', () => {
             navList.classList.toggle('active');
         });
 
-        // Language dropdown toggle
         if (languageTrigger && languageMenu) {
             const handleLanguageClick = (e) => {
                 e.stopPropagation();
-                const isOpen = languageMenu.classList.contains('active');
-                
-                // Close all other dropdowns first
                 document.querySelectorAll('.language-menu').forEach(menu => {
-                    if (menu !== languageMenu) {
-                        menu.classList.remove('active');
-                    }
+                    if (menu !== languageMenu) menu.classList.remove('active');
                 });
-                
                 languageMenu.classList.toggle('active');
             };
 
             languageTrigger.addEventListener('click', handleLanguageClick);
 
-            // Close dropdown when clicking outside (using capture phase)
             const handleOutsideClick = (e) => {
-                if (!this.shadowRoot.contains(e.target)) {
-                    languageMenu.classList.remove('active');
-                }
+                if (!this.shadowRoot.contains(e.target)) languageMenu.classList.remove('active');
             };
 
-            // Use capture phase to catch events before they reach shadow DOM
             document.addEventListener('click', handleOutsideClick, true);
 
-            // Handle language selection
             languageItems.forEach(item => {
                 item.addEventListener('click', (e) => {
                     e.preventDefault();
-                    
-                    // Remove active class from all items
                     languageItems.forEach(i => i.classList.remove('active'));
-                    
-                    // Add active class to clicked item
                     item.classList.add('active');
-                    
-                    // Update the language button icon
                     const lang = item.getAttribute('data-lang');
                     const langImg = item.querySelector('img');
                     if (langImg) {
                         const buttonImg = languageTrigger.querySelector('img');
-                        if (buttonImg) {
-                            buttonImg.src = langImg.src;
-                        }
+                        if (buttonImg) buttonImg.src = langImg.src;
                     }
-                    
-                    // Close the dropdown
                     languageMenu.classList.remove('active');
-                    
-                    // Here you can add logic to change the page language
                     console.log('Language changed to:', lang);
                 });
             });
