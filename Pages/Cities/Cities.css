@@ -1,11 +1,11 @@
-/* Cities Page Styles */
+﻿
 
-/* Header */
+
 header {
     position: relative;
     width: 100%;
     min-height: 1100px;
-    background: url("../../Images/Cyclist on Veloretti Caféracer.png") no-repeat center center;
+    background: url("../../Images/Cyclist on Veloretti CafÃ©racer.png") no-repeat center center;
     background-size: cover;
     background-position: center top;
     border-bottom: 1px solid var(--heavy-metal-10);
@@ -102,7 +102,7 @@ header custom-page-header {
     letter-spacing: 5%;
 }
 
-/* Hero Section */
+
 .hero-section {
     width: 100%;
     height: 828px;
@@ -123,7 +123,7 @@ header custom-page-header {
     justify-content: flex-start;
 }
 
-/* Title Section */
+
 .title-section {
     padding: 97px 196.37px 77px 211.63px;
     background: var(--nero);
@@ -147,7 +147,7 @@ header custom-page-header {
     width: 100%;
 }
 
-/* Text-Media Section (Women's Bikes) */
+
 .text-media-section {
     padding: 78px 86px;
     background: var(--nero);
@@ -225,7 +225,7 @@ header custom-page-header {
     color: var(--heavy-metal);
 }
 
-/* Collection Slider Section */
+
 .collection-slider-section {
     padding: 80px 0 0;
     background: #b6b6b6;
@@ -325,7 +325,7 @@ header custom-page-header {
     white-space: nowrap;
 }
 
-/* Text-Media Static Section (Men's Bikes) */
+
 .text-media-static-section {
     padding: 70px 86px;
     background: var(--nero);
@@ -412,7 +412,7 @@ header custom-page-header {
     display: block;
 }
 
-/* Final Title Section */
+
 .final-title-section {
     padding: 97px 42.35px 77px 42.34px;
     background: var(--nero);
@@ -443,7 +443,7 @@ header custom-page-header {
     width: 100%;
 }
 
-/* Footer */
+
 .footer {
     background: var(--heavy-metal);
     position: relative;
@@ -692,7 +692,7 @@ header custom-page-header {
     padding: 0 31.91px 0 0;
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 1440px) {
     .text-media-wrapper {
         height: auto;
@@ -1111,4 +1111,5 @@ header custom-page-header {
         white-space: normal;
     }
 }
+
 

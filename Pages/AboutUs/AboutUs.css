@@ -1,209 +1,230 @@
-/* Basic Styles */
+﻿
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #111;
+    background-color: #fff;
+}
+
+
+header {
+    width: 100%;
+    height: 80vh;
+    background: url("../../Images/black Veloretti Electric Ivy Two Pro .png") no-repeat center center / cover;
+    background-color: #f0f0f0;
 }
 
 .content-wrapper {
-    max-width: 1200px;
+    max-width: 1300px; 
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-/* Hero Section */
-.hero-section {
-    width: 100%;
-    overflow: hidden;
+
+section {
+    padding: 80px 0;
 }
 
-.hero-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
 
-/* Forever Forward Section */
-.forever-forward-section .content-wrapper {
+.forever-forward-section .content-wrapper,
+.pon-bike-section .content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 40px;
-    margin-top: 50px;
+    gap: 60px;
 }
 
-.forever-forward-section .section-image {
+.section-image {
     width: 100%;
-    max-width: 500px;
     height: auto;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
-.forever-forward-section .text-content {
-    text-align: center;
+.text-content {
+    text-align: left;
+    padding: 0 10px;
 }
 
-.forever-forward-section h2 {
-    font-size: 2.5em;
+.text-content h2 {
+    font-size: 2.2em;
     margin-bottom: 20px;
+    font-weight: 500;
 }
 
-.forever-forward-section p {
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
-/* Part of Pon.Bike Section */
-.pon-bike-section .content-wrapper {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.pon-bike-section .section-image {
-    width: 100%;
+.text-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
     max-width: 500px;
-    height: auto;
 }
 
-.pon-bike-section .text-content {
-    text-align: center;
-}
 
-.pon-bike-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.pon-bike-section p {
-    font-size: 1.1em;
-    line-height: 1.6;
-}
-
-/* Designed in Amsterdam Section */
 .designed-in-amsterdam-section {
-    margin-top: 80px;
+    padding: 100px 0;
     text-align: center;
 }
 
 .designed-in-amsterdam-section h2 {
-    font-size: 3em;
+    font-size: 2.5em;
     line-height: 1.2;
-    max-width: 800px;
+    font-weight: 500;
     margin: 0 auto;
 }
 
-/* Bike Showcase Section */
+
 .bike-showcase-section {
-    margin-top: 80px;
-    padding-bottom: 50px;
+    background-color: #e4e5e7; 
+    padding-bottom: 80px;
 }
 
 .bike-showcase-section h3 {
     font-size: 2em;
     margin-bottom: 30px;
-    text-align: center;
+    text-align: left;
+    font-weight: 500;
 }
 
 .bike-categories {
-    display: flex;
-    overflow-x: auto;
-    gap: 30px;
-    padding-bottom: 20px; /* For scrollbar space */
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 .bike-card {
-    flex: 0 0 300px; /* Fixed width for cards */
-    background-color: #f8f8f8;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f0f1f3; 
+    border-radius: 12px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+.card-header h4 {
+    font-size: 1.8em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.card-header .price {
+    font-size: 1rem;
+    color: #333;
+}
+
+
+.card-subtags {
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.active-tag {
+    text-decoration: underline;
+    margin-right: 15px;
+    color: #000;
+    cursor: pointer;
+}
+
+.inactive-tag {
+    color: #999;
+    cursor: pointer;
+}
+
+
+.image-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 40px 0;
 }
 
 .bike-card img {
     width: 100%;
     height: auto;
-    border-radius: 4px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    object-fit: contain;
+    mix-blend-mode: multiply; 
 }
 
-.bike-card h4 {
-    font-size: 1.5em;
-    margin-bottom: 5px;
-}
 
-.bike-card p {
-    font-size: 0.9em;
-    color: #666;
-}
-
-.bike-card .card-actions {
+.card-actions {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    align-items: center;
+    gap: 20px;
 }
 
-.bike-card button {
-    background-color: #000;
-    color: #fff;
+
+.btn-buy {
+    background-color: #fff;
+    color: #000;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 12px 30px;
+    border-radius: 50px; 
+    font-weight: 600;
     cursor: pointer;
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
 }
 
-.bike-card button:hover {
-    background-color: #333;
+.btn-buy:hover {
+    transform: scale(1.05);
 }
 
-/* Responsive Design */
+
+.link-learn {
+    color: #000;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-underline-offset: 4px;
+}
+
+
 @media (min-width: 768px) {
-    .forever-forward-section .content-wrapper,
-    .pon-bike-section .content-wrapper {
-        flex-direction: row;
-        text-align: left;
+    
+    
+    .forever-forward-section .content-wrapper {
+        flex-direction: row; 
     }
 
     .pon-bike-section .content-wrapper {
-        flex-direction: row-reverse;
+        flex-direction: row; 
     }
 
+    
+    .forever-forward-section .section-image,
+    .pon-bike-section .section-image,
     .forever-forward-section .text-content,
     .pon-bike-section .text-content {
-        text-align: left;
         flex: 1;
+        width: 50%;
     }
 
-    .forever-forward-section .section-image,
-    .pon-bike-section .section-image {
-        flex: 1;
+    
+    .text-content h2 {
+        font-size: 2.8em;
     }
 
     .designed-in-amsterdam-section h2 {
-        font-size: 4em;
+        font-size: 4.5em;
+        max-width: 900px;
     }
 
+    
     .bike-categories {
-        justify-content: center;
-    }
-
-    .bike-card {
-        flex: 0 0 30%;
-    }
-}
-
-@media (min-width: 1024px) {
-    .designed-in-amsterdam-section h2 {
-        font-size: 5em;
-    }
-
-    .bike-card {
-        flex: 0 0 28%;
+        grid-template-columns: repeat(3, 1fr); 
     }
 }

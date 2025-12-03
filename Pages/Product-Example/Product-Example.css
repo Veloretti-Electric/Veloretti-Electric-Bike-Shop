@@ -1,10 +1,10 @@
-
+﻿
 img {
     display: block;
     width: 100%;
     
     object-fit: cover;
-    /* TEMPORARY: This ensures empty images are visible blocks */
+    
     background-color: #e0e0e0; 
 }
 
@@ -14,12 +14,12 @@ h1, h2, h3 {
     letter-spacing: -0.02em;
 }
 
-/* --- Layout Utilities --- */
+
 .container {
 
     max-width: var(--max-width);
     margin: 0 auto;
-    /* We need the container to inherit height for the hero section to work */
+    
     height: 100%; 
 }
 
@@ -31,11 +31,11 @@ h1, h2, h3 {
     align-items: center;
     height: 100%; /* Important: Grid must fill the parent height */
 }
-/* --- Product Intro Section --- */
+
 .product-intro {
-    width: 100%;       /* Use 100% instead of 97vw to avoid horizontal scrollbars */
-    height: 80vh;      /* Fixed height as requested */
-    overflow: hidden;  /* Keeps everything neat */
+    width: 100%;       
+    height: 80vh;      
+    overflow: hidden;  
     margin-bottom: 60px;
     border: 1px solid red;
 }
@@ -51,9 +51,9 @@ h1, h2, h3 {
    
     width: 100%;
    
-    height: 100%;       /* Forces image to be full height of container */
-    object-fit: cover;  /* KEY: Crops image to fill space without stretching */
-    object-position:center; /* Centers the bike in the frame */
+    height: 100%;       
+    object-fit: cover;  
+    object-position:center; 
 }
 .product-visual img
 {
@@ -63,7 +63,7 @@ h1, h2, h3 {
     border: 1px solid red;
 }
 .product-details {
-    padding: 0 0 0 60px; /* Spacing between image and text */
+    padding: 0 0 0 60px; 
     max-width: 500px;
 }
 .product-titles {
@@ -90,7 +90,7 @@ h1, h2, h3 {
     margin-bottom: 30px;
 }
 
-/* Color Selection */
+
 .color-selection {
     margin-bottom: 40px;
 }
@@ -107,7 +107,7 @@ h1, h2, h3 {
 }
 
 .color-radio input {
-    display: none; /* Hide actual radio button */
+    display: none; 
 }
 
 .swatch {
@@ -124,7 +124,7 @@ h1, h2, h3 {
 .swatch.grey { background-color: #888; }
 .swatch.beige { background-color: #d2cbb9; }
 
-/* Active state ring */
+
 .color-radio input:checked + .swatch::after {
     content: '';
     position: absolute;
@@ -159,33 +159,32 @@ h1, h2, h3 {
     margin-bottom: 20px;
 }
 
-/* --- Full Width Media --- */
+
 .full-width-media img {
-    height: 80vh; /* Takes up substantial screen height */
+    height: 80vh; 
     width: 100%;
 }
 
-/* --- Feature Blocks (Alternating) --- */
+
 .feature-block {
     overflow: hidden;
 }
 
 .feature-block .container.grid-50-50 {
-    /* Remove padding for the grid to allow flush edges if desired, 
-       or keep container padding. The image looks like it touches edges. */
+    
     padding: 0; 
     max-width: 100%;
 }
 
 .text-content {
-    padding: 10% 15%; /* Generous whitespace around text */
+    padding: 10% 15%; 
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .text-content h2 {
-    font-size: 2.5rem; /* Large headings like "Silent and powerful" */
+    font-size: 2.5rem; 
     margin-bottom: 24px;
     text-transform: capitalize;
 }
@@ -196,7 +195,7 @@ h1, h2, h3 {
     max-width: 350px;
 }
 
-/* Alternate Layouts */
+
 .layout-image-left .image-content {
     order: 1;
 }
@@ -211,12 +210,12 @@ h1, h2, h3 {
     order: 2;
 }
 
-/* Specific Backgrounds */
+
 .bg-warm-grey {
-    background-color: #ebebeb; /* Slight grey tint seen in Gears section */
+    background-color: #ebebeb; 
 }
 
-/* --- Showcase Section --- */
+
 .bike-showcase {
     padding: 80px 0;
     text-align: center;
@@ -245,7 +244,7 @@ h1, h2, h3 {
     background: white;
 }
 
-/* --- Specs Section --- */
+
 .specs-section {
     padding: 80px 42px;
     background-color: var(--color-white);
@@ -291,21 +290,20 @@ h1, h2, h3 {
     font-weight: 500;
 }
 
-/* --- Responsive Design --- */
+
 @media (max-width: 768px) {
     .grid-50-50 {
-        grid-template-columns: 1fr; /* Stack vertically */
+        grid-template-columns: 1fr; 
     }
 
     .feature-block .container.grid-50-50 {
         padding: 0;
     }
 
-    /* Reset order so image is always on top or bottom consistently, 
-       or keep the order to alternate text/image vertically */
+    
     .layout-image-left .image-content,
     .layout-text-left .image-content {
-        order: 1; /* Images first on mobile usually looks better */
+        order: 1; 
     }
     .layout-image-left .text-content,
     .layout-text-left .text-content {
@@ -314,7 +312,7 @@ h1, h2, h3 {
     }
 
     .specs-grid {
-        grid-template-columns: 1fr; /* Stack specs */
+        grid-template-columns: 1fr; 
         gap: 30px;
     }
 
