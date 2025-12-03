@@ -410,10 +410,11 @@ class CustomFooter extends HTMLElement {
                             </div>
                         </form>
                         <div class="social-icons">
-                            <a href="#"><img src="../../Images/instagram.png" alt="Instagram"></a>
-                            <a href="#"><img src="../../Images/linkedin.png" alt="LinkedIn"></a>
-                            <a href="#"><img src="../../Images/Youtube.png" alt="YouTube"></a>
-                            <a href="#"><img src="../../Images/tik-tok.png" alt="TikTok"></a>
+                            <a href="https://www.facebook.com/Veloretti/" target="_blank" rel="noopener"><img src="../../Images/facebook-svgrepo-com.svg" alt="Facebook" loading="lazy"></a>
+                            <a href="https://www.instagram.com/veloretti/" target="_blank" rel="noopener"><img src="../../Images/instagram.png" alt="Instagram" loading="lazy"></a>
+                            <a href="https://www.linkedin.com/company/veloretti/" target="_blank" rel="noopener"><img src="../../Images/linkedin.png" alt="LinkedIn" loading="lazy"></a>
+                            <a href="https://www.youtube.com/user/Veloretti" target="_blank" rel="noopener"><img src="../../Images/Youtube.png" alt="YouTube" loading="lazy"></a>
+                            <a href="https://www.tiktok.com/@veloretti" target="_blank" rel="noopener"><img src="../../Images/tik-tok.png" alt="TikTok" loading="lazy"></a>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,14 @@
+/* Image Animation */
+.animated-img {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 1.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.animated-img.visible {
+    opacity: 1;
+    transform: scale(1);
+}
 /* Shared Styles for Veloretti Electric Bike Shop */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 

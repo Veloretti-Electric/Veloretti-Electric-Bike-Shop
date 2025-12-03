@@ -26,6 +26,12 @@ class CustomPageHeader extends HTMLElement
                     position: relative; /* Needed for absolute menu positioning */
                 }
 
+                :host([transparent]) .header {
+                    background: transparent;
+                    border-bottom: none;
+                    color  : white;
+                }
+
                 .nav-container {
                     max-width: 1440px;
                     margin: 0 auto;
@@ -41,11 +47,20 @@ class CustomPageHeader extends HTMLElement
                     z-index: 1002; /* Higher than the dropdown menu */
                 }
 
+                :host([transparent]) .nav-container {
+                    background: transparent;
+                }
+
                 /* LOGO */
                 .logo-img img {
                     height: 14px;
                     width: auto;
                     display: block;
+                    filter: none;
+                }
+
+                :host([transparent]) .logo-img img {
+                    filter: brightness(0) invert(1);
                 }
 
                 /* NAVIGATION LINKS (Desktop) */
@@ -66,7 +81,7 @@ class CustomPageHeader extends HTMLElement
                 .nav-button, .nav-link {
                     font-family: 'Nuckle', 'Inter', sans-serif;
                     font-weight: 600;
-                    font-size: 12px;
+                    font-size: 16px;
                     line-height: 1.25;
                     letter-spacing: 0.05em;
                     text-transform: uppercase;
@@ -80,6 +95,11 @@ class CustomPageHeader extends HTMLElement
                     text-decoration: none;
                     padding: 10px;
                     white-space: nowrap;
+                }
+
+                :host([transparent]) .nav-button,
+                :host([transparent]) .nav-link {
+                    color: #fff;
                 }
 
                 .nav-button::after {
@@ -98,20 +118,102 @@ class CustomPageHeader extends HTMLElement
                 }
                 
                 .control-btn {
-                    
-                  
+                    position: relative;
                     background-color:none;
                     background: none;
                     border: none;
                     cursor: pointer;
                     display: flex;
                     align-items: center;
+                    width: 32px;
+                    height: 32px;
                 }
 
                 .control-btn img {
                     height: 100%;
                     width: 100%;
-                  
+                    object-fit: contain;
+                    filter: none;
+                }
+
+                :host([transparent]) .control-btn img {
+                    filter: brightness(0) invert(1);
+                }
+
+                /* Cart Badge */
+                .cart-badge {
+                    position: absolute;
+                    top: -4px;
+                    right: -4px;
+                    background-color: var(--heavy-metal, #141615);
+                    color: var(--nero, #fff);
+                    border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: 'Nuckle', 'Inter', sans-serif;
+                    font-size: 11px;
+                    font-weight: 600;
+                    line-height: 1;
+                }
+
+                /* Language Dropdown */
+                .language-dropdown {
+                    position: relative;
+                }
+
+                .language-menu {
+                    position: absolute;
+                    top: calc(100% + 10px);
+                    right: 0;
+                    background-color: var(--nero, #fff);
+                    border: 1px solid rgba(0,0,0,0.1);
+                    border-radius: 4px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                    min-width: 180px;
+                    padding: 8px 0;
+                    display: none;
+                    z-index: 1003;
+                    opacity: 0;
+                    transform: translateY(-10px);
+                    transition: opacity 0.2s ease, transform 0.2s ease;
+                }
+
+                .language-menu.active {
+                    display: block;
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                .language-menu-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    padding: 12px 20px;
+                    font-family: 'Nuckle', 'Inter', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: var(--heavy-metal, #141615);
+                    text-decoration: none;
+                    cursor: pointer;
+                    transition: background-color 0.2s ease;
+                }
+
+                .language-menu-item:hover {
+                    background-color: var(--gallery, #F0F0F0);
+                }
+
+                .language-menu-item.active {
+                    background-color: var(--gallery, #F0F0F0);
+                    font-weight: 600;
+                }
+
+                .language-menu-item img {
+                    width: 20px;
+                    height: 20px;
+                    object-fit: contain;
                 }
 
                 /* HAMBURGER MENU ICON */
@@ -134,6 +236,10 @@ class CustomPageHeader extends HTMLElement
                     height: 2px;
                     background-color: var(--heavy-metal, #141615);
                     transition: all 0.3s linear;
+                }
+
+                :host([transparent]) .hamburger-line {
+                    background-color: #fff;
                 }
 
                 /* ============================
@@ -178,12 +284,12 @@ class CustomPageHeader extends HTMLElement
                     .nav-button, .nav-link {
                         width: 100%;
                         padding: 15px 30px; /* Big click area */
-                        font-size: 14px;
+                        font-size: 16px;
                         justify-content: space-between; /* Move arrow to right */
                     }
 
                     .logo-img img { height: 12px; }
-                    .language-btn { display: none; }
+                    .language-dropdown { display: none; }
                     .nav-controls { gap: 5px; }
                 }
             </style>
@@ -192,28 +298,45 @@ class CustomPageHeader extends HTMLElement
                 <nav class="nav">
                     <div class="nav-container">
 
-                        <a href="/" class="logo-img">
-                            <img src="../../Images/Logo.png" alt="Veloretti Logo">
+                        <a href="/" class="logo-img" href="../../Index.html">
+                            <img src="../../Images/Logo.png" alt="Veloretti Logo" loading="eager">
                         </a>
 
                         <ul class="nav-list" id="main-nav">
-                            <li class="nav-item"><button class="nav-button">Electric</button></li>
-                            <li class="nav-item"><button class="nav-button">City</button></li>
-                            <li class="nav-item"><button class="nav-button">Kids</button></li>
-                            <li class="nav-item"><a href="#" class="nav-link">Accessories</a></li>
-                            <li class="nav-item"><a href="#" class="nav-link">Stores</a></li>
-                            <li class="nav-item"><button class="nav-button">Leasing</button></li>
+                            
+                            <li class="nav-item"><a href="../../Pages/Electric/Electric.html" class="nav-link">Electric</a></li>
+                            <li class="nav-item"><a href="../../Pages/Cities/Cities.html" class="nav-link">City</a></li>
+                            <li class="nav-item"><a href="../../Pages/Kids/Kids.html" class="nav-link">kids</a></li>
+                            <li class="nav-item"><a href="../../Pages/Products/Products.html" class="nav-link">Stores</a></li>
                         </ul>
 
                         <div class="nav-controls">
-                            <button class="control-btn language-btn">
-                                <img src="../../Images/en.svg" alt="page language">
+                            <div class="language-dropdown">
+                                <button class="control-btn language-btn" id="language-trigger">
+                                    <img src="../../Images/en.svg" alt="page language" loading="eager">
+                                </button>
+                                <div class="language-menu" id="language-menu">
+                                    <a href="#" class="language-menu-item active" data-lang="en">
+                                        <img src="../../Images/en.svg" alt="English" loading="eager">
+                                        <span>English</span>
+                                    </a>
+                                    <a href="#" class="language-menu-item" data-lang="nl">
+                                        <span>Nederlands</span>
+                                    </a>
+                                    <a href="#" class="language-menu-item" data-lang="de">
+                                        <span>Deutsch</span>
+                                    </a>
+                                    <a href="#" class="language-menu-item" data-lang="fr">
+                                        <span>Français</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <button class="control-btn account-btn"  OnClick="window.location.href='../../Pages/Profile/Profile.html'">
+                                <img src="../../Images/person.svg" alt="Account settings" loading="eager">
                             </button>
-                            <button class="control-btn account-btn">
-                                <img src="../../Images/person.svg" alt="Account settings">
-                            </button>
-                            <button class="control-btn cart-btn">
-                                <img src="../../Images/purshase.svg" alt="Shopping cart">
+                            <button class="control-btn cart-btn" OnClick="window.location.href='../../Pages/Cart/Cart.html'">
+                                <img src="../../Images/purshase.svg" alt="Shopping cart" loading="eager">
+                                <span class="cart-badge">1</span>
                             </button>
 
                             <button class="hamburger-btn" id="mobile-menu-trigger">
@@ -232,12 +355,72 @@ class CustomPageHeader extends HTMLElement
     connectedCallback() {
         const hamburger = this.shadowRoot.getElementById('mobile-menu-trigger');
         const navList = this.shadowRoot.getElementById('main-nav');
+        const languageTrigger = this.shadowRoot.getElementById('language-trigger');
+        const languageMenu = this.shadowRoot.getElementById('language-menu');
+        const languageItems = this.shadowRoot.querySelectorAll('.language-menu-item');
         
-        // Add click listener
+        // Hamburger menu toggle
         hamburger.addEventListener('click', () => {
-            // Toggle the 'active' class on the list
             navList.classList.toggle('active');
         });
+
+        // Language dropdown toggle
+        if (languageTrigger && languageMenu) {
+            const handleLanguageClick = (e) => {
+                e.stopPropagation();
+                const isOpen = languageMenu.classList.contains('active');
+                
+                // Close all other dropdowns first
+                document.querySelectorAll('.language-menu').forEach(menu => {
+                    if (menu !== languageMenu) {
+                        menu.classList.remove('active');
+                    }
+                });
+                
+                languageMenu.classList.toggle('active');
+            };
+
+            languageTrigger.addEventListener('click', handleLanguageClick);
+
+            // Close dropdown when clicking outside (using capture phase)
+            const handleOutsideClick = (e) => {
+                if (!this.shadowRoot.contains(e.target)) {
+                    languageMenu.classList.remove('active');
+                }
+            };
+
+            // Use capture phase to catch events before they reach shadow DOM
+            document.addEventListener('click', handleOutsideClick, true);
+
+            // Handle language selection
+            languageItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove active class from all items
+                    languageItems.forEach(i => i.classList.remove('active'));
+                    
+                    // Add active class to clicked item
+                    item.classList.add('active');
+                    
+                    // Update the language button icon
+                    const lang = item.getAttribute('data-lang');
+                    const langImg = item.querySelector('img');
+                    if (langImg) {
+                        const buttonImg = languageTrigger.querySelector('img');
+                        if (buttonImg) {
+                            buttonImg.src = langImg.src;
+                        }
+                    }
+                    
+                    // Close the dropdown
+                    languageMenu.classList.remove('active');
+                    
+                    // Here you can add logic to change the page language
+                    console.log('Language changed to:', lang);
+                });
+            });
+        }
     }
 }
 
