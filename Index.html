@@ -265,7 +265,7 @@
                             <span class="accordion-icon">+</span>
                         </button>
                         <div class="accordion-content">
-                            <p>Content for this FAQ item...</p>
+                            <p>When an employee retires early, the bike lease can be transferred to the employee or another colleague, or the lease can be bought out. The specific terms depend on the remaining lease period and the agreement with our leasing partner. Our platform makes it easy to handle these transitions smoothly.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -274,7 +274,7 @@
                             <span class="accordion-icon">+</span>
                         </button>
                         <div class="accordion-content">
-                            <p>Content for this FAQ item...</p>
+                            <p>The Veloretti Bike Plan is completely free for employers to set up and manage. There are no hidden costs or administrative fees. The employee pays the monthly lease amount through salary sacrifice, and you as the employer can choose whether to contribute to the costs. The only cost to the employer would be any voluntary contribution you choose to make towards the bike.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -283,7 +283,7 @@
                             <span class="accordion-icon">+</span>
                         </button>
                         <div class="accordion-content">
-                            <p>Content for this FAQ item...</p>
+                            <p>The Veloretti Bike Plan is completely free for employers to set up and manage. There are no hidden costs or administrative fees. The employee pays the monthly lease amount through salary sacrifice, and you as the employer can choose whether to contribute to the costs. The only cost to the employer would be any voluntary contribution you choose to make towards the bike.</p>
                         </div>
                     </div>
                     <div class="accordion-item">
@@ -292,7 +292,7 @@
                             <span class="accordion-icon">+</span>
                         </button>
                         <div class="accordion-content">
-                            <p>Content for this FAQ item...</p>
+                            <p>The Veloretti bicycle plan operates under the Dutch tax rules for employee benefits. The bike is considered a taxable benefit, but the tax advantage comes from the salary sacrifice arrangement. The bike must be used for commuting to work (at least part of the time) to qualify for the tax benefits. The lease period is typically 36 months, after which the employee can choose to purchase the bike at a fair market value or return it and lease a new one.</p>
                         </div>
                     </div>
                 </div>
@@ -302,6 +302,35 @@
 
    <custom-footer></custom-footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionButtons = document.querySelectorAll('.accordion-button');
+            
+            accordionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.parentElement;
+                    const content = button.nextElementSibling;
+                    const icon = button.querySelector('.accordion-icon');
+                    
+                    // Toggle the open class on the accordion item
+                    item.classList.toggle('open');
+                    
+                    // Toggle the icon between + and -
+                    if (item.classList.contains('open')) {
+                        icon.textContent = '-';
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        icon.textContent = '+';
+                        content.style.maxHeight = '0';
+                    }
+                });
+            });
+            
+            // Initialize first item as open
+            const firstContent = document.querySelector('.accordion-content');
+            firstContent.style.maxHeight = firstContent.scrollHeight + 'px';
+        });
+    </script>
     <script src="Pages/Home/Home.js"></script>
 
 </body>
