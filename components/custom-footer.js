@@ -64,7 +64,7 @@ class CustomFooter extends HTMLElement {
                     <div class="footer-custom-text">
                         <p>Ready to take the Electric Ivy or Ace for a spin? Electric test rides are now available in Amsterdam, Amstelveen, Abcoude, Bussum, Den Haag, Nijmegen, Weesp, Wormerveer, Berlin, Hamburg and Munich. Schedule your test ride now and we'll see you there.</p>
                     </div>
-                    <div class="button-wrap"><button class="btn-footer">BOOK NOW</button></div>
+                    <div class="button-wrap"><button onclick="window.location.href='../../Index.html#GetInTouch'" class="btn-footer">BOOK NOW</button></div>
                 </div>
             </div>
 
