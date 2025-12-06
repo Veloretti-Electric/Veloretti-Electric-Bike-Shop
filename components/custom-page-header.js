@@ -101,7 +101,6 @@ class CustomPageHeader extends HTMLElement {
                     .nav-item { width: 100%; border-bottom: 1px solid #f0f0f0; }
                     .nav-button, .nav-link { width: 100%; padding: 15px 30px; font-size: 16px; justify-content: space-between; }
                     .logo-img img { height: 12px; }
-                    .language-dropdown { display: none; }
                     .nav-controls { gap: 5px; }
                 }
             </style>
