@@ -557,3 +557,148 @@ img {
     }
 }
 
+/* --- TABLET & SMALL LAPTOP (1024px and down) --- */
+@media (max-width: 1024px) {
+    /* Tighten global margins */
+    .electric-bikes, 
+    .explore-section, 
+    .commute-text, 
+    .split-section, 
+    .testimonials {
+        padding: 4rem 2rem;
+        max-width: 100%;
+    }
+
+    /* Adjust Split Section to reduce gap */
+    .split-section {
+        gap: 2rem;
+    }
+
+    /* Shrink huge titles slightly */
+    .commute-text h1 {
+        font-size: 2.8rem;
+    }
+
+    /* Adjust Product Cards */
+    .product-card-large {
+        height: auto;
+        min-height: 550px; /* Allow flex to breathe */
+    }
+}
+
+/* --- MOBILE (768px and down) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Hero Section */
+    .hero-top {
+        height: 65vh; /* Reduce height on mobile */
+    }
+    
+    .hero-bg {
+        padding-left: 1.5rem; /* Less padding on the left */
+        background-position: 70% center; /* Center image focus */
+    }
+
+    .hero-title {
+        font-size: 2rem; /* Make title readable but not huge */
+    }
+
+    /* 2. Electric Bikes (Product Grid) */
+    .product-grid-2col {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 3rem;
+    }
+
+    .product-card-large {
+        height: auto; /* Remove fixed height */
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .product-img {
+        max-height: 250px; /* Smaller images for mobile */
+        margin: 2rem 0;
+    }
+
+    /* 3. Explore Categories */
+    .category-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+
+    .cat-card {
+        height: auto;
+        min-height: 350px;
+    }
+
+    /* 4. Commute Text (Big Typography) */
+    .commute-text {
+        margin-left: 0; /* Remove the 10% offset */
+        padding: 4rem 1.5rem;
+        text-align: center; /* Center align for mobile app-feel */
+    }
+
+    .commute-text h1 {
+        font-size: 2.2rem; /* Much smaller font for mobile */
+    }
+
+    /* 5. Split Sections (Leasing/Service) */
+    .split-section {
+        grid-template-columns: 1fr; /* Stack */
+        padding: 3rem 1.5rem;
+        gap: 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .split-content {
+        order: 2; /* Text comes second by default */
+        text-align: center; /* Center text on mobile */
+        align-items: center; /* Center button/link */
+    }
+    
+    .split-image-container {
+        order: 1; /* Image comes first */
+        width: 100%;
+    }
+
+    .split-content h2 {
+        font-size: 2.5rem;
+    }
+
+    .split-content p {
+        margin-bottom: 2rem;
+    }
+
+    /* Handle the "Reverse Mobile" class you have in HTML */
+    .split-section.reverse-mobile {
+        flex-direction: column; 
+    }
+    /* If you want specific ordering for the reverse section: */
+    .split-section.reverse-mobile .split-content { order: 2; }
+    .split-section.reverse-mobile .split-image-container { order: 1; }
+
+    /* 6. Testimonials */
+    .testimonials {
+        padding: 4rem 1.5rem;
+    }
+
+    .testimonials h2 {
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .testimonials-row {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .quote-card {
+        padding: 2rem;
+        min-height: auto;
+    }
+    
+    /* 7. Banner Image */
+    .full-banner {
+        margin-bottom: 2rem;
+    }
+}
