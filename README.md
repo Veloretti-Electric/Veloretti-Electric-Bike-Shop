@@ -35,7 +35,6 @@ Veloretti-Electric-Bike-Shop/
 ├── Index.html
 ├── shared.css
 ├── shared.js
-├── PRD.md
 ├── README.md
 ├── components/
 │   ├── custom-page-header.js
@@ -79,9 +78,11 @@ Veloretti-Electric-Bike-Shop/
 ## Key Pages & Features
 
 ### 1) Homepage (`Index.html`)
+
 **Purpose:** Landing page promoting employee bike plans and featured products.
 
 **Sections:**
+
 - Hero section with CTA
 - Bike plans for employees (benefits and visuals)
 - Employer benefits / "Free of charge" explanation
@@ -93,21 +94,25 @@ Veloretti-Electric-Bike-Shop/
 **Key features:** responsive design, animated scroll effects (Intersection Observer), custom web components (header/footer), SEO meta tags.
 
 ### 2) Products Page (`Pages/Products/Products.html`)
+
 **Purpose:** Product catalog and product discovery.
 
 **Sections & features:** hero banner, electric bikes grid (image carousels, color pickers, "Buy Now"), categories (City, Kids, Accessories), store map, leasing info, testimonials and awards, responsive grid, lazy-loaded images.
 
 ### 3) Shopping Cart (`Pages/Cart/Cart.html`)
+
 **Purpose:** Review and manage cart before checkout.
 
 **Sections & features:** cart items list (image, name, price, remove), order summary (subtotal, shipping, total), secure checkout button, payment method icons, upsells (insurance, accessories).
 
 ### 4) Product Detail (`Pages/Product-Example/Product-Example.html`)
+
 **Purpose:** Detailed product page template.
 
 **Planned:** high-res gallery, 360° view (future), specs, color/size selection, stock, add-to-cart, reviews, related products.
 
 ### Supporting Pages
+
 - Cities: store locations and service areas
 - Electric: category landing
 - Kids: kids bike collection
@@ -117,6 +122,7 @@ Veloretti-Electric-Bike-Shop/
 ## Core User Workflows
 
 ### Workflow 1: Customer Purchase Journey
+
 1. Land on homepage or products page
 2. Browse by category (Electric, City, Kids)
 3. Open product details
@@ -130,6 +136,7 @@ Veloretti-Electric-Bike-Shop/
 **Status:** Steps 1–8 implemented on frontend. Checkout/payment require backend integration.
 
 ### Workflow 2: Employer Bike Plan Registration
+
 1. Employer reads bike plans on homepage
 2. Views "How It Works"
 3. Fills contact form with company details
@@ -139,25 +146,30 @@ Veloretti-Electric-Bike-Shop/
 **Status:** Frontend steps implemented; backend & partner integration required.
 
 ### Workflow 3: FAQ Interaction
+
 - Expand/collapse accordion answers; fully implemented on frontend.
 
 ### Workflow 4: Product Browsing & Filtering
+
 - Browse products, use color picker and image carousel; advanced filtering (price, attributes) is planned.
 
 ## Technical Implementation
 
 ### Frontend technologies
+
 - **HTML5:** semantic markup, accessibility considerations, structured data prep
 - **CSS3:** custom properties (variables), Flexbox & Grid, responsive/mobile-first, modular per-page styles
 - **JavaScript (ES6+):** vanilla JS, Intersection Observer animations, form validation, carousels, accordions, module loading with `defer`
 - **Web Components:** custom elements for header/footer, Shadow DOM encapsulation
 
 ### Current features
+
 - **Implemented:** responsive layouts, image optimization (WEBP + lazy loading), SEO meta tags, Open Graph/Twitter cards, frontend contact form validation, product carousels, color selection UI, accordion FAQ, shopping cart UI.
 - **Partial:** product filtering structure, cart management (no persistence), form submission (no backend sink).
 - **Not implemented (backend required):** form processing, payment gateway, user auth, order management, inventory, email/CRM integration, analytics setup.
 
 ### Performance optimizations
+
 - Lazy-load images (`loading="lazy"`)
 - Defer JavaScript (`defer` attribute)
 - Use WEBP images where possible
@@ -165,4 +177,5 @@ Veloretti-Electric-Bike-Shop/
 - Use Intersection Observer for efficient scroll effects
 
 ### SEO
+
 Per-page: unique meta title/description, canonical URLs, robots meta, Open Graph and Twitter cards, correct heading hierarchy, alt text on images, semantic HTML.
