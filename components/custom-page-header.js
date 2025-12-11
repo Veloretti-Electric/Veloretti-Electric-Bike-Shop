@@ -147,6 +147,9 @@ class CustomPageHeader extends HTMLElement {
         `;
     }
 
+
+
+    /* making the header interactive for mobile */
     connectedCallback() {
         const hamburger = this.shadowRoot.getElementById('mobile-menu-trigger');
         const navList = this.shadowRoot.getElementById('main-nav');
@@ -154,42 +157,32 @@ class CustomPageHeader extends HTMLElement {
         const languageMenu = this.shadowRoot.getElementById('language-menu');
         const languageItems = this.shadowRoot.querySelectorAll('.language-menu-item');
 
+
+
         hamburger.addEventListener('click', () => {
             navList.classList.toggle('active');
         });
 
+
+
+        // Language selection
         if (languageTrigger && languageMenu) {
-            const handleLanguageClick = (e) => {
+
+            // Toggle menu on button click
+            languageTrigger.addEventListener('click', (e) => {
                 e.stopPropagation();
-                document.querySelectorAll('.language-menu').forEach(menu => {
-                    if (menu !== languageMenu) menu.classList.remove('active');
-                });
                 languageMenu.classList.toggle('active');
-            };
-
-            languageTrigger.addEventListener('click', handleLanguageClick);
-
-            const handleOutsideClick = (e) => {
-                if (!this.shadowRoot.contains(e.target)) languageMenu.classList.remove('active');
-            };
-
-            document.addEventListener('click', handleOutsideClick, true);
-
-            languageItems.forEach(item => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    languageItems.forEach(i => i.classList.remove('active'));
-                    item.classList.add('active');
-                    const lang = item.getAttribute('data-lang');
-                    const langImg = item.querySelector('img');
-                    if (langImg) {
-                        const buttonImg = languageTrigger.querySelector('img');
-                        if (buttonImg) buttonImg.src = langImg.src;
-                    }
-                    languageMenu.classList.remove('active');
-                    console.log('Language changed to:', lang);
-                });
             });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!this.shadowRoot.contains(e.target)) {
+                    languageMenu.classList.remove('active');
+                }
+            }, true);
+
+
+
         }
     }
 }
