@@ -1,9 +1,11 @@
 class CustomFooter extends HTMLElement {
-    constructor() {
+    constructor()
+ {
         super();
         this.attachShadow({ mode: 'open' });
 
         this.shadowRoot.innerHTML = `
+        
         <style>
             :host { display: block; width: 100%; }
             .footer { background: var(--heavy-metal, #141615); color: var(--nero, #fff); width: 100%; }

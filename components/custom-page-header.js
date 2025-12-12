@@ -1,5 +1,6 @@
 class CustomPageHeader extends HTMLElement {
-    constructor() {
+    constructor()
+{
         super();
         this.attachShadow({ mode: 'open' });
 
@@ -149,16 +150,17 @@ class CustomPageHeader extends HTMLElement {
 
 
     /* making the header interactive for mobile */
-    connectedCallback() {
+    connectedCallback()
+    {
         const hamburger = this.shadowRoot.getElementById('mobile-menu-trigger');
         const navList = this.shadowRoot.getElementById('main-nav');
         const languageTrigger = this.shadowRoot.getElementById('language-trigger');
         const languageMenu = this.shadowRoot.getElementById('language-menu');
-        const languageItems = this.shadowRoot.querySelectorAll('.language-menu-item');
 
 
 
-        hamburger.addEventListener('click', () => {
+        hamburger.addEventListener('click', () =>
+    {
             navList.classList.toggle('active');
         });
 
