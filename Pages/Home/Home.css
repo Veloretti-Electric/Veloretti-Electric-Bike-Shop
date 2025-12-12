@@ -495,7 +495,7 @@
     font-weight: 400;
     font-size: clamp(0.75rem, 0.97vw, 0.875rem);
     line-height: 1.21;
-    color: rgba(20, 22, 21, 0.4);
+    color: rgba(20, 22, 21, 0.75);
 }
 
 .how-it-works-image {
@@ -687,8 +687,13 @@
     flex-shrink: 0;
 }
 
-.color-picker label {
+.color-picker label:empty {
     display: none;
+}
+
+.color-picker label {
+    display: inline-flex;
+    cursor: pointer;
 }
 
 .color-picker input[type="radio"] {

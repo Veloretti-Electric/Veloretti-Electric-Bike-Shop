@@ -45,7 +45,7 @@ class CustomPageHeader extends HTMLElement {
                     background: transparent;
                 }
 
-                .logo-img img { height: 14px; width: auto; display: block; filter: none; }
+                .logo-img img { height: auto; width:12vw; display: block; filter: none; }
 
                 :host([transparent]) .logo-img img { filter: brightness(0) invert(1); }
 
@@ -101,7 +101,7 @@ class CustomPageHeader extends HTMLElement {
                     .nav-list.active { display: flex; }
                     .nav-item { width: 100%; border-bottom: 1px solid #f0f0f0; }
                     .nav-button, .nav-link { width: 100%; padding: 15px 30px; font-size: 16px; justify-content: space-between; }
-                    .logo-img img { height: 12px; }
+                   .logo-img img { height: auto; width:100px; display: block; filter: none; }
                     .nav-controls { gap: 5px; }
                 }
             </style>
@@ -110,7 +110,7 @@ class CustomPageHeader extends HTMLElement {
                 <nav class="nav">
                     <div class="nav-container">
                         <a href="/" class="logo-img" href="../../Index.html">
-                            <img src="../../Images/Logo.png" alt="Veloretti Logo" loading="eager">
+                            <img src="../../Images/Logo.svg" alt="Veloretti Logo" loading="eager">
                         </a>
 
                         <ul class="nav-list" id="main-nav">
@@ -138,7 +138,7 @@ class CustomPageHeader extends HTMLElement {
                             <button class="control-btn account-btn" OnClick="window.location.href='../../Pages/Profile/Profile.html'"><img src="../../Images/person.svg" alt="Account settings" loading="eager"></button>
                             <button class="control-btn cart-btn" OnClick="window.location.href='../../Pages/Cart/Cart.html'"><img src="../../Images/purshase.svg" alt="Shopping cart" loading="eager"><span class="cart-badge">1</span></button>
 
-                            <button class="hamburger-btn" id="mobile-menu-trigger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
+                            <button class="hamburger-btn" id="mobile-menu-trigger" aria-label="Toggle mobile navigation menu" aria-expanded="false" aria-controls="main-nav"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button>
                         </div>
 
                     </div>
@@ -161,7 +161,8 @@ class CustomPageHeader extends HTMLElement {
 
         hamburger.addEventListener('click', () =>
     {
-            navList.classList.toggle('active');
+            const isExpanded = navList.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isExpanded.toString());
         });
 
 

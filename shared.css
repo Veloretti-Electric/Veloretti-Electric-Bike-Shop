@@ -1,4 +1,16 @@
-﻿
+﻿/* Screen reader only text - visually hidden but accessible to assistive technologies */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 /* animation of images */
 .animated-img {
     opacity: 0;
@@ -9,6 +21,7 @@
 
 /* when java script add clss .visible this animatio will be invoked  */
 .animated-img.visible {
+
     opacity: 1;
     transform: scale(1);
 }
@@ -150,5 +163,6 @@ img {
     height: auto;
     display: block;
 }
+
 
 

@@ -173,12 +173,22 @@
                      </div>
 
                      <form class="color-picker">
-                        <label for="bike-color-picker"></label>
-                       <input type="radio" value="black" name="bike-color-picker">
-                       <input type="radio" value="gray" name="bike-color-picker">
-                       <input type="radio" value="biege" name="bike-color-picker">
-                       <input type="radio" value="biege-black" name="bike-color-picker">
-                       
+                        <label for="ace-color-black">
+                            <input type="radio" id="ace-color-black" value="black" name="bike-color-picker" aria-label="Black color">
+                            <span class="sr-only">Black color</span>
+                        </label>
+                        <label for="ace-color-gray">
+                            <input type="radio" id="ace-color-gray" value="gray" name="bike-color-picker" aria-label="Gray color">
+                            <span class="sr-only">Gray color</span>
+                        </label>
+                        <label for="ace-color-biege">
+                            <input type="radio" id="ace-color-biege" value="biege" name="bike-color-picker" aria-label="Beige color">
+                            <span class="sr-only">Beige color</span>
+                        </label>
+                        <label for="ace-color-biege-black">
+                            <input type="radio" id="ace-color-biege-black" value="biege-black" name="bike-color-picker" aria-label="Beige and black color">
+                            <span class="sr-only">Beige and black color</span>
+                        </label>
                      </form>
                 </li>
 
@@ -207,12 +217,22 @@
                      </div>
 
                      <form class="color-picker">
-                        <label for="bike-color-picker"></label>
-                       <input type="radio" value="black" name="bike-color-picker">
-                       <input type="radio" value="gray" name="bike-color-picker">
-                       <input type="radio" value="biege" name="bike-color-picker">
-                       <input type="radio" value="biege-white" name="bike-color-picker">
-                       
+                        <label for="ivy-color-black">
+                            <input type="radio" id="ivy-color-black" value="black" name="bike-color-picker" aria-label="Black color">
+                            <span class="sr-only">Black color</span>
+                        </label>
+                        <label for="ivy-color-gray">
+                            <input type="radio" id="ivy-color-gray" value="gray" name="bike-color-picker" aria-label="Gray color">
+                            <span class="sr-only">Gray color</span>
+                        </label>
+                        <label for="ivy-color-biege">
+                            <input type="radio" id="ivy-color-biege" value="biege" name="bike-color-picker" aria-label="Beige color">
+                            <span class="sr-only">Beige color</span>
+                        </label>
+                        <label for="ivy-color-biege-white">
+                            <input type="radio" id="ivy-color-biege-white" value="biege-white" name="bike-color-picker" aria-label="Beige and white color">
+                            <span class="sr-only">Beige and white color</span>
+                        </label>
                      </form>
                 </li>
             </ul>
@@ -228,12 +248,13 @@
                     <input type="email" placeholder="Email address" class="form-input">
                     <input type="tel" placeholder="Phone number" class="form-input">
                     <input type="text" placeholder="Company name" class="form-input">
-                    <select class="form-select">
-                        <option>Company Size</option>
-                        <option>1-10</option>
-                        <option>11-50</option>
-                        <option>51-200</option>
-                        <option>200+</option>
+                    <label for="company-size" class="sr-only">Company Size</label>
+                    <select id="company-size" class="form-select" aria-label="Company Size">
+                        <option value="">Company Size</option>
+                        <option value="1-10">1-10</option>
+                        <option value="11-50">11-50</option>
+                        <option value="51-200">51-200</option>
+                        <option value="200+">200+</option>
                     </select>
                     <input type="number" placeholder="Number of bikes" class="form-input">
                     <textarea placeholder="How can we help" class="form-textarea" rows="4"></textarea>
